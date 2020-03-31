@@ -1,0 +1,6 @@
+framework module Pods_DataStructuresSwift_DataStructuresSwiftUITests {
+  umbrella header "Pods-DataStructuresSwift-DataStructuresSwiftUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

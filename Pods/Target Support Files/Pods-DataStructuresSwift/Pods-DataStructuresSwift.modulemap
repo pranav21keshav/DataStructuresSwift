@@ -1,0 +1,6 @@
+framework module Pods_DataStructuresSwift {
+  umbrella header "Pods-DataStructuresSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
