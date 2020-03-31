@@ -1,0 +1,420 @@
+disabled_rules:
+  - compiler_protocol_init
+  - legacy_constructor
+  - legacy_hashing
+  - multiple_closures_with_trailing_closure
+  - todo
+  - trailing_whitespace # trailing whitespace rule can get annoying since xcode automatically adds indentation for newlines
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - force_cast
+  
+opt_in_rules:
+  - anyobject_protocol
+  - array_init
+  - closure_spacing
+  - collection_alignment
+  - contains_over_first_not_nil
+  - control_statement
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - explicit_init
+  - fallthrough
+#- file_name
+  - first_where
+  - identical_operands
+  - let_var_whitespace
+  - last_where
+  - literal_expression_end_indentation
+  - nimble_operator
+  - number_separator
+  - operator_usage_whitespace
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - prohibited_super_call
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - single_test_class
+  - sorted_first_last
+  - sorted_imports
+  - static_operator
+  - trailing_newline
+  - unneeded_parentheses_in_closure_argument
+  - vertical_parameter_alignment_on_call
+  - xct_specific_matcher
+  - yoda_condition
+
+# note that these directories must match with the actual Finder directories (the ones in Xcode proj are different)
+included:
+  - DataStructuresSwift
+excluded:
+  - DataStructuresSwiftTests
+  - DataStructuresSwiftUITests
+  - Pods
+
+# CONFIGURATION FOR INDIVIDUAL RULES
+
+anyobject_protocol:
+  severity: error
+
+array_init:
+  severity: error
+
+block_based_kvo:
+  severity: error
+
+class_delegate_protocol:
+  severity: error
+
+closing_brace:
+  severity: error
+
+closure_parameter_position:
+  severity: error
+
+closure_spacing:
+  severity: error
+
+collection_alignment:
+  severity: error
+
+colon:
+  severity: error
+
+comma:
+  severity: error
+
+contains_over_first_not_nil:
+  severity: error
+
+control_statement:
+  severity: error
+
+cyclomatic_complexity:
+  ignores_case_statements: true # switch statments should not be taken into account when determining the complexity of a method
+  warning: 20
+  error: 20
+
+deployment_target:
+  severity: error
+
+discarded_notification_center_observer:
+  severity: error
+
+discouraged_direct_init:
+  severity: error
+
+duplicate_imports:
+  severity: error
+
+dynamic_inline:
+  severity: error
+
+empty_count:
+  severity: error
+
+empty_enum_arguments:
+  severity: error
+
+empty_parameters:
+  severity: error
+
+empty_parentheses_with_trailing_closure:
+  severity: error
+
+empty_string:
+  severity: error
+
+empty_xctest_method:
+  severity: error
+
+explicit_init:
+  severity: error
+
+fallthrough:
+  severity: error
+
+file_length:
+  warning: 1000
+  error: 1000
+
+file_name:
+  severity: error
+  suffix_pattern: "\\+.*|Extensions?" # ignore files such as 'UIButtonExtension.swift'
+  excluded:
+    - NetworkCommons.swift
+    - NetworkExtensions.swift
+
+first_where:
+  severity: error
+
+for_where:
+  severity: error
+
+force_try:
+  severity: warning
+
+function_body_length:
+  warning: 80
+  error: 80
+
+function_parameter_count:
+  warning: 6
+  error: 6
+
+generic_type_name:
+  severity: error
+
+identical_operands:
+  severity: error
+
+identifier_name:
+  max_length:
+    warning: 80
+    error: 80
+  min_length: 2
+  excluded:
+    - id
+    - i
+    - n
+    - me
+    - x
+    - y
+    - vc  # for view controllers
+    - up # for directional enums
+
+implicit_getter:
+  severity: error
+
+inert_defer:
+  severity: error
+
+is_disjoint:
+  severity: error
+
+large_tuple:
+  warning: 2 # these value determine the maximum allowed length of the tuple; aka there will be an error only on length 3 tuples
+  error: 2
+
+last_where:
+  severity: error
+
+leading_whitespace:
+  severity: error
+
+legacy_cggeometry_functions:
+  severity: error
+
+legacy_constant:
+  severity: error
+
+legacy_nsgeometry_functions:
+  severity: error
+
+let_var_whitespace:
+  severity: error
+
+line_length:
+  ignores_comments: true
+  warning: 210 # this value determines the wording for the error message. If this is left off, the error msg will contain the default value of 120 characters
+  error: 210
+
+literal_expression_end_indentation:
+  severity: error
+
+mark:
+  severity: error
+
+nesting:
+  type_level:
+    warning: 3
+    error: 3
+  statement_level:
+    warning: 5
+    error: 5
+
+nimble_operator:
+  severity: error
+
+no_fallthrough_only:
+  severity: error
+
+notification_center_detachment:
+  severity: error
+
+number_separator:
+  severity: error
+  minimum_length: 5
+  minimum_fraction_length: 8
+
+opening_brace:
+  severity: error
+
+operator_usage_whitespace:
+  severity: error
+
+operator_whitespace:
+  severity: error
+
+overridden_super_call:
+  severity: error
+
+override_in_extension:
+  severity: error
+
+pattern_matching_keywords:
+  severity: error
+
+private_over_fileprivate:
+  severity: error
+
+prohibited_super_call:
+  severity: error
+
+protocol_property_accessors_order:
+  severity: error
+
+quick_discouraged_call:
+  severity: error
+
+quick_discouraged_focused_test:
+  severity: error
+
+quick_discouraged_pending_test:
+  severity: error
+
+redundant_discardable_let:
+  severity: error
+
+redundant_nil_coalescing:
+  severity: error
+
+redundant_objc_attribute:
+  severity: error
+
+redundant_optional_initialization:
+  severity: error
+
+redundant_set_access_control:
+  severity: error
+
+redundant_string_enum_value:
+  severity: error
+
+redundant_type_annotation:
+  severity: error
+
+redundant_void_return:
+  severity: error
+
+return_arrow_whitespace:
+  severity: error
+
+shorthand_operator:
+  severity: error
+
+single_test_class:
+  severity: error
+
+sorted_first_last:
+  severity: error
+
+sorted_imports:
+  severity: error
+
+statement_position:
+  severity: error
+
+static_operator:
+  severity: error
+
+superfluous_disable_command:
+  severity: error
+
+switch_case_alignment:
+  severity: error
+
+syntactic_sugar:
+  severity: error
+
+trailing_comma:
+  severity: error
+
+trailing_newline:
+  severity: error
+
+trailing_semicolon:
+  severity: error
+
+type_body_length:
+  severity: error
+
+type_name:
+  severity: error
+
+unneeded_break_in_switch:
+  severity: error
+
+unneeded_parentheses_in_closure_argument:
+  severity: error
+
+unused_closure_parameter:
+  severity: warning
+
+unused_control_flow_label:
+  severity: error
+
+unused_enumerated:
+  severity: error
+
+unused_optional_binding:
+  severity: warning
+
+unused_setter_value:
+  severity: error
+
+valid_ibinspectable:
+  severity: error
+
+vertical_parameter_alignment:
+  severity: error
+
+vertical_parameter_alignment_on_call:
+  severity: error
+
+vertical_whitespace:
+  severity: error
+
+weak_computed_property:
+  severity: error
+
+weak_delegate:
+  severity: error
+
+xctfail_message:
+  severity: error
+
+xct_specific_matcher:
+  severity: error
+
+yoda_condition:
+  severity: error
+
+type_name:
+  max_length:
+    warning: 100 # this value determines the wording for the error message. If this is left off, the error msg will contain the default value
+    error: 100
+  excluded:
+    - T
+
+type_body_length:
+  warning: 400
+  error: 400
+
+void_return:
+  severity: error

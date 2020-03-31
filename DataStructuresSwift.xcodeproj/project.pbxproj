@@ -19,6 +19,7 @@
 		BD9F478324338A2200B9F016 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9F478124338A2200B9F016 /* LaunchScreen.storyboard */; };
 		BD9F478E24338A2300B9F016 /* DataStructuresSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F478D24338A2300B9F016 /* DataStructuresSwiftTests.swift */; };
 		BD9F479924338A2300B9F016 /* DataStructuresSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F479824338A2300B9F016 /* DataStructuresSwiftUITests.swift */; };
+		BD9F47A72433A89900B9F016 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BD9F47A62433A89900B9F016 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		BD9F479424338A2300B9F016 /* DataStructuresSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataStructuresSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9F479824338A2300B9F016 /* DataStructuresSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructuresSwiftUITests.swift; sourceTree = "<group>"; };
 		BD9F479A24338A2300B9F016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD9F47A62433A89900B9F016 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DA722AC99DFA2E25F8852B1E /* Pods_DataStructuresSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataStructuresSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC894A65B0D1442888D4758D /* Pods-DataStructuresSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwiftTests/Pods-DataStructuresSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		E84C3A1DAB6B14365051DEAF /* Pods-DataStructuresSwift-DataStructuresSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwift-DataStructuresSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwift-DataStructuresSwiftUITests/Pods-DataStructuresSwift-DataStructuresSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,13 +115,13 @@
 				B6F41D076C22DEB1910B853C /* Pods-DataStructuresSwiftTests.debug.xcconfig */,
 				DC894A65B0D1442888D4758D /* Pods-DataStructuresSwiftTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		BD9F476724338A1F00B9F016 = {
 			isa = PBXGroup;
 			children = (
+				BD9F47A62433A89900B9F016 /* .swiftlint.yml */,
 				BD9F477224338A1F00B9F016 /* DataStructuresSwift */,
 				BD9F478C24338A2300B9F016 /* DataStructuresSwiftTests */,
 				BD9F479724338A2300B9F016 /* DataStructuresSwiftUITests */,
@@ -183,6 +185,7 @@
 				BD9F476C24338A1F00B9F016 /* Sources */,
 				BD9F476D24338A1F00B9F016 /* Frameworks */,
 				BD9F476E24338A1F00B9F016 /* Resources */,
+				BD9F47A82433A9E600B9F016 /* SwiftLint Run Script */,
 			);
 			buildRules = (
 			);
@@ -279,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9F47A72433A89900B9F016 /* .swiftlint.yml in Resources */,
 				BD9F478324338A2200B9F016 /* LaunchScreen.storyboard in Resources */,
 				BD9F478024338A2200B9F016 /* Assets.xcassets in Resources */,
 				BD9F477B24338A1F00B9F016 /* Main.storyboard in Resources */,
@@ -345,6 +349,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		BD9F47A82433A9E600B9F016 /* SwiftLint Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		E90C326E685A5A6BDB9204F7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

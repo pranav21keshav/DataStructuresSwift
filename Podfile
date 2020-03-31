@@ -6,6 +6,7 @@ target 'DataStructuresSwift' do
   use_frameworks!
 
   # Pods for DataStructuresSwift
+  pod 'SwiftLint'
 
   target 'DataStructuresSwiftTests' do
     inherit! :search_paths
