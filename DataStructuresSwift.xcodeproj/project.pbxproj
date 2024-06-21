@@ -10,6 +10,8 @@
 		177F079FD7129316A29F8FAD /* Pods_DataStructuresSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8E4380F010EE8EA482F354 /* Pods_DataStructuresSwiftTests.framework */; };
 		56106C900CAF57FF69CB80D2 /* Pods_DataStructuresSwift_DataStructuresSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC2FB30B0D7B31DEB474CAF /* Pods_DataStructuresSwift_DataStructuresSwiftUITests.framework */; };
 		74540FFF7127A15B19F40167 /* Pods_DataStructuresSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA722AC99DFA2E25F8852B1E /* Pods_DataStructuresSwift.framework */; };
+		BD3DEF052B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3DEF042B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift */; };
+		BD635CFA2C1F40D500745D99 /* Permuation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD635CF92C1F40D500745D99 /* Permuation.swift */; };
 		BD677B642438B7C200029D43 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD677B632438B7C200029D43 /* Queue.swift */; };
 		BD9CF6B224360AF90099C9E3 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CF6B124360AF90099C9E3 /* Sorting.swift */; };
 		BD9F477424338A1F00B9F016 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F477324338A1F00B9F016 /* AppDelegate.swift */; };
@@ -27,11 +29,19 @@
 		BD9F47B02433B8AF00B9F016 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F47AF2433B8AF00B9F016 /* Node.swift */; };
 		BD9F47B22433B93A00B9F016 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F47B12433B93A00B9F016 /* TreeNode.swift */; };
 		BD9F47B42433B9F500B9F016 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F47B32433B9F500B9F016 /* Stack.swift */; };
+		BDA1C32A2C1A18E8007D8F4E /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1C3292C1A18E8007D8F4E /* BinarySearchTree.swift */; };
 		BDA8AE97243E4AD0003B7D7D /* TreeProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8AE96243E4AD0003B7D7D /* TreeProblems.swift */; };
 		BDA8AE99243E4AED003B7D7D /* GenericProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8AE98243E4AED003B7D7D /* GenericProblems.swift */; };
 		BDA8AE9B243E4B06003B7D7D /* LinkedListProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8AE9A243E4B06003B7D7D /* LinkedListProblems.swift */; };
+		BDAA49732C0E35BA00B7FC84 /* Searching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAA49722C0E35BA00B7FC84 /* Searching.swift */; };
+		BDAF04FD2C25C96100E20AB4 /* KadaneAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */; };
+		BDAF04FF2C25CB8E00E20AB4 /* ArrayProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */; };
+		BDAF05012C25CF6B00E20AB4 /* StringProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */; };
+		BDDB2CB12B70B2620088D746 /* BuyTwoChocolates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */; };
+		BDDB2CB32B70B9B90088D746 /* ElementCountInArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */; };
 		BDEEAF9F2434C1130062F01D /* SinglyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEEAF9E2434C1120062F01D /* SinglyLinkedList.swift */; };
 		BDEEAFA1243508A40062F01D /* TreeOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEEAFA0243508A40062F01D /* TreeOperations.swift */; };
+		BDF7E82B2A51D77A007C2B21 /* CircularQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF7E82A2A51D77A007C2B21 /* CircularQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +68,8 @@
 		3C8E4380F010EE8EA482F354 /* Pods_DataStructuresSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataStructuresSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B62FC7C86FBBCB06D29D5D /* Pods-DataStructuresSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwift.release.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwift/Pods-DataStructuresSwift.release.xcconfig"; sourceTree = "<group>"; };
 		B6F41D076C22DEB1910B853C /* Pods-DataStructuresSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwiftTests/Pods-DataStructuresSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BD3DEF042B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSellStockBestTime.swift; sourceTree = "<group>"; };
+		BD635CF92C1F40D500745D99 /* Permuation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permuation.swift; sourceTree = "<group>"; };
 		BD677B632438B7C200029D43 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		BD9CF6B124360AF90099C9E3 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		BD9F477024338A1F00B9F016 /* DataStructuresSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataStructuresSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,11 +93,19 @@
 		BD9F47AF2433B8AF00B9F016 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		BD9F47B12433B93A00B9F016 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		BD9F47B32433B9F500B9F016 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		BDA1C3292C1A18E8007D8F4E /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		BDA8AE96243E4AD0003B7D7D /* TreeProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeProblems.swift; sourceTree = "<group>"; };
 		BDA8AE98243E4AED003B7D7D /* GenericProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericProblems.swift; sourceTree = "<group>"; };
 		BDA8AE9A243E4B06003B7D7D /* LinkedListProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListProblems.swift; sourceTree = "<group>"; };
+		BDAA49722C0E35BA00B7FC84 /* Searching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searching.swift; sourceTree = "<group>"; };
+		BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KadaneAlgorithm.swift; sourceTree = "<group>"; };
+		BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayProblems.swift; sourceTree = "<group>"; };
+		BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProblems.swift; sourceTree = "<group>"; };
+		BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTwoChocolates.swift; sourceTree = "<group>"; };
+		BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCountInArray.swift; sourceTree = "<group>"; };
 		BDEEAF9E2434C1120062F01D /* SinglyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedList.swift; sourceTree = "<group>"; };
 		BDEEAFA0243508A40062F01D /* TreeOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOperations.swift; sourceTree = "<group>"; };
+		BDF7E82A2A51D77A007C2B21 /* CircularQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularQueue.swift; sourceTree = "<group>"; };
 		DA722AC99DFA2E25F8852B1E /* Pods_DataStructuresSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataStructuresSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC894A65B0D1442888D4758D /* Pods-DataStructuresSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwiftTests/Pods-DataStructuresSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		E84C3A1DAB6B14365051DEAF /* Pods-DataStructuresSwift-DataStructuresSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwift-DataStructuresSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwift-DataStructuresSwiftUITests/Pods-DataStructuresSwift-DataStructuresSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -202,7 +222,9 @@
 		BD9F47A92433B78F00B9F016 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
+				BDDB2CAF2B70B2110088D746 /* Problems */,
 				BD9F47AA2433B7E300B9F016 /* DataStructures */,
+				BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */,
 			);
 			path = AppModules;
 			sourceTree = "<group>";
@@ -215,6 +237,7 @@
 				BD9F47AF2433B8AF00B9F016 /* Node.swift */,
 				BD9F47B12433B93A00B9F016 /* TreeNode.swift */,
 				BD9F47B32433B9F500B9F016 /* Stack.swift */,
+				BDF7E82A2A51D77A007C2B21 /* CircularQueue.swift */,
 				BD677B632438B7C200029D43 /* Queue.swift */,
 				BDEEAF9E2434C1120062F01D /* SinglyLinkedList.swift */,
 				BDEEAFA0243508A40062F01D /* TreeOperations.swift */,
@@ -222,8 +245,23 @@
 				BDA8AE96243E4AD0003B7D7D /* TreeProblems.swift */,
 				BDA8AE98243E4AED003B7D7D /* GenericProblems.swift */,
 				BDA8AE9A243E4B06003B7D7D /* LinkedListProblems.swift */,
+				BDAA49722C0E35BA00B7FC84 /* Searching.swift */,
+				BDA1C3292C1A18E8007D8F4E /* BinarySearchTree.swift */,
 			);
 			path = DataStructures;
+			sourceTree = "<group>";
+		};
+		BDDB2CAF2B70B2110088D746 /* Problems */ = {
+			isa = PBXGroup;
+			children = (
+				BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */,
+				BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */,
+				BD3DEF042B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift */,
+				BD635CF92C1F40D500745D99 /* Permuation.swift */,
+				BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */,
+				BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */,
+			);
+			path = Problems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,16 +493,26 @@
 				BD9F477824338A1F00B9F016 /* ViewController.swift in Sources */,
 				BD9F477424338A1F00B9F016 /* AppDelegate.swift in Sources */,
 				BDEEAFA1243508A40062F01D /* TreeOperations.swift in Sources */,
+				BD635CFA2C1F40D500745D99 /* Permuation.swift in Sources */,
+				BDDB2CB12B70B2620088D746 /* BuyTwoChocolates.swift in Sources */,
 				BD9F477E24338A1F00B9F016 /* DataStructuresSwift.xcdatamodeld in Sources */,
 				BD9CF6B224360AF90099C9E3 /* Sorting.swift in Sources */,
+				BDAF05012C25CF6B00E20AB4 /* StringProblems.swift in Sources */,
+				BDAF04FF2C25CB8E00E20AB4 /* ArrayProblems.swift in Sources */,
 				BD9F47B42433B9F500B9F016 /* Stack.swift in Sources */,
+				BDF7E82B2A51D77A007C2B21 /* CircularQueue.swift in Sources */,
 				BD677B642438B7C200029D43 /* Queue.swift in Sources */,
 				BDA8AE9B243E4B06003B7D7D /* LinkedListProblems.swift in Sources */,
 				BDA8AE99243E4AED003B7D7D /* GenericProblems.swift in Sources */,
 				BD9F47B02433B8AF00B9F016 /* Node.swift in Sources */,
+				BD3DEF052B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift in Sources */,
 				BDEEAF9F2434C1130062F01D /* SinglyLinkedList.swift in Sources */,
 				BD9F47AE2433B81D00B9F016 /* DataStructureViewController.swift in Sources */,
+				BDAF04FD2C25C96100E20AB4 /* KadaneAlgorithm.swift in Sources */,
+				BDA1C32A2C1A18E8007D8F4E /* BinarySearchTree.swift in Sources */,
 				BD9F477624338A1F00B9F016 /* SceneDelegate.swift in Sources */,
+				BDAA49732C0E35BA00B7FC84 /* Searching.swift in Sources */,
+				BDDB2CB32B70B9B90088D746 /* ElementCountInArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

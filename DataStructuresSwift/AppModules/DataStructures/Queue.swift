@@ -7,6 +7,14 @@
 //
 
 import Foundation
+// MARK: - Practical Applications
+// 1. Processing interrupts in OS
+// 2. Job scheduling
+// 3. Shared resources
+
+// MARK: - Disadvantages
+// 1. Random access is not allowed
+// 2. Not suitable for large data sets
 struct Queue<T> {
     private var elements = [T]()
     

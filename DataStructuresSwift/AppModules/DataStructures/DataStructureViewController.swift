@@ -33,6 +33,23 @@ class DataStructureViewController: UIViewController {
         print(a)
         sorting.quicksortLomuto(&list, low: 0, high: list.count - 1)
         print(list)
+        let buy2Chocolates = BuyTwoChocolates()
+        print("Left Money - ", buy2Chocolates.buyChococolates(prices: [1, 2, 2], money: 3))
+        print("Left Money - ", buy2Chocolates.buyChococolates(prices: [3, 2, 3], money: 3))
+
+        let elementCount = ElementCountInArray()
+        elementCount.elementCountIn(array: [0, 0, 1, 2])
+        elementCount.elementCountIn(array: [1, 2, 3, 4])
+        elementCount.elementCountIn(array: [5, 5, 5, 5])
+
+        let permutation = Permuation()
+//        var string = "ABC"
+//        for i in 0..<string.count {
+//            print(string[i])
+//        }
+//        permutation.permute(string: &string, start: 0, end: string.count - 1)
+        let stringProblems = StringProblems()
+        stringProblems.findSubsrtingNaive(string: "I am a disco dancer", pattern: "disco")
     }
     /*
     // MARK: - Navigation

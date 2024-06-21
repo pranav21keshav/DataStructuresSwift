@@ -7,6 +7,15 @@
 //
 
 import Foundation
+// MARK: - Practical Applications
+// 1. Undo, redo
+// 2. Most recent feature
+// 3. Web page navigation
+// 4. Parenthesis check
+// 5. Expression evaluation, infix, postfix, prefix expressions
+// MARK: - Disadvantages
+// 1. Not suitable for random search
+// 2. Not suitable for large data sets
 struct Stack<T> {
     private var elements = [T]()
     
