@@ -16,5 +16,6 @@ class ViewController: UIViewController {
         let buy2Chocolates = BuyTwoChocolates()
         print("Left Money - ", buy2Chocolates.buyChococolates(prices: [1, 2, 2], money: 3))
         print("Left Money - ", buy2Chocolates.buyChococolates(prices: [3, 2, 3], money: 3))
+        let arrayProblems = ArrayProblems()
     }
 }

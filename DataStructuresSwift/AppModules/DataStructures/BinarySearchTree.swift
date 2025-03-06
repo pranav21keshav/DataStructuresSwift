@@ -14,21 +14,55 @@ class BinarySearchTree<T: Comparable> {
         self.root = root
     }
 
+    private func minValueNode(node: TreeNode<T>) -> TreeNode<T> {
+        var current = node
+        while current.left != nil {
+            current = current.left!
+        }
+
+        return current
+    }
+
+    func insert(node: TreeNode<T>?, data: T) -> TreeNode<T> {
+        if node == nil {
+            let newNode = TreeNode<T>(value: data)
+            return newNode
+        }
+        if data < node!.data {
+            node?.left = insert(node: node?.left, data: data)
+        } else {
+            node?.right = insert(node: node?.right, data: data)
+        }
+
+        return node!
+    }
+
+    func search(node: TreeNode<T>?, data: T) -> TreeNode<T>? {
+        if node == nil || node?.data == data {
+            return node
+        }
+
+        if data < node!.data {
+            return search(node: node?.left, data: data)
+        }
+
+        return search(node: node?.right, data: data)
+    }
+
     /*
-    func insert(data: T) {
-        if root == nil {
-            root = TreeNode(value: data)
-            return
-        }
-        var current = root
-        if data < current!.data {
-            insert(data: <#T##Comparable#>)
+    func delete(node: TreeNode<T>?, data: T) -> TreeNode<T>? {
+        if node == nil {
+            return node
         }
 
-    }
-
-    private func insertData(data: T) {
-        
-    }
-     */
+        if data < node!.data {
+            return delete(node: node, data: data)
+        } else if data > node!.data {
+            return delete(node: node, data: data)
+        } else {
+            if node?.left == nil {
+                let temp = TreeNode(value: node?.data, )
+            }
+        }
+    }*/
 }

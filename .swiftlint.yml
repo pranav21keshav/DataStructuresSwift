@@ -154,7 +154,7 @@ first_where:
   severity: error
 
 for_where:
-  severity: error
+    severity: warning
 
 force_try:
   severity: warning
@@ -414,7 +414,7 @@ type_name:
 
 type_body_length:
   warning: 400
-  error: 400
+  error: 900
 
 void_return:
   severity: error

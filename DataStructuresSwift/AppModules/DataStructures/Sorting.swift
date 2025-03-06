@@ -9,15 +9,32 @@
 import Foundation
 struct Sorting<T: Comparable> {
 
-    // Time Complexity: O(N^2)
-    // Stable
+    // Time Complexity: O(N^2) - Worst case and average case
+    func selectionSort(array: inout [T]) -> [T] {
+        for i in 0..<array.count - 1 {
+            var minimumIndex = i
+            for j in i + 1..<array.count {
+                if array[j] < array[minimumIndex] {
+                    minimumIndex = j
+                }
+            }
+            let temp = array[i]
+            array[i] = array[minimumIndex]
+            array[minimumIndex] = array[i]
+        }
+        return array
+    }
+    // Time Complexity: O(N^2) - Worst case and average case
+    // Stable - Yes
     // In place
+    // Method - Exchanging
+    // Memory - O(1)
     func bubbleSort(array: [T]) -> [T] {
         var array = array
         let count = array.count
         for i in 0..<count {
             var swapped = false
-            for j in 0..<count - 1 - i {
+            for j in 0..<count - i - 1 {
                 if array[j] > array[j + 1] {
                     let temp = array[j]
                     array[j] = array[j + 1]
@@ -32,9 +49,11 @@ struct Sorting<T: Comparable> {
         return array
     }
 
-    // Time Complexity: O(N^2)
-    // Stable
+    // Time Complexity: O(N^2) - Worst case and average case
+    // Stable - Yes
     // In place
+    // Method - Insertion
+    // Memory - O(1)
     func insertionSortPractice(_ array: [T]) -> [T] {
         var array = array
         for i in 1..<array.count {
@@ -90,7 +109,11 @@ struct Sorting<T: Comparable> {
         }
     }
 
-    // O(n log n)
+    // O(n log n) - Worst case and average case
+    // Stable - Yes
+    // External
+    // Method - Merging
+    // Memory - O(n)
     func mergeSort(array: inout [T], start: Int, end: Int) {
         guard start >= end else { return }
         let middle = (start + end) / 2
@@ -148,7 +171,7 @@ struct Sorting<T: Comparable> {
         let pivot = array[high]
         var i = low
         for j in low..<high where array[j] <= pivot {
-            array.swapAt(j, i)
+            array.swapAt(i, j)
             i += 1
         }
         array.swapAt(i, high)

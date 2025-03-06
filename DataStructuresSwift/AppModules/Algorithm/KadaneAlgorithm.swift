@@ -9,6 +9,10 @@
 import Foundation
 
 struct KadaneAlgorithm {
+    init() {
+        print("---------> Kadane")
+        subset(array: [-2, -3, 4, -1, -2, 1, 5, -3])
+    }
     func subset(array: [Int]) {
         var start = 0
         var end = 0

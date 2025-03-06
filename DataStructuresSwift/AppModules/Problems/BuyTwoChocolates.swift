@@ -46,6 +46,8 @@ Constraints:
 
 */
 
+// Time - O(n)
+// Space - O(1)
 class BuyTwoChocolates {
     public func buyChococolates(prices: [Int], money: Int) -> Int {
         var firstMinCost = Int.max

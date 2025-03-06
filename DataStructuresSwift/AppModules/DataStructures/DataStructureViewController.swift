@@ -50,6 +50,16 @@ class DataStructureViewController: UIViewController {
 //        permutation.permute(string: &string, start: 0, end: string.count - 1)
         let stringProblems = StringProblems()
         stringProblems.findSubsrtingNaive(string: "I am a disco dancer", pattern: "disco")
+
+        _ = KMP()
+       _ = Bitwise()
+        _ = KadaneAlgorithm()
+        _ = QuickSelect()
+        _ = Graph()
+        _ = AdjacencyList(vertices: 6)
+        _ = ArrayProblems()
+        _ = StringProblems()
+        _ = TreeOperations<Int>()
     }
     /*
     // MARK: - Navigation

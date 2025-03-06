@@ -7,8 +7,17 @@
 //
 
 import Foundation
-struct TreeOperations<T> {
-    public  func createIntBinaryTree()-> TreeNode<Int> {
+struct TreeOperations<T: Comparable & Equatable> {
+    init() {
+        var binaryTreeRoot: TreeNode<T> = createIntBinaryTree()
+        let traversal = inorderTraversal(binaryTreeRoot)
+        print("Traveral - \(traversal)")
+        let binaryTreeRoot1 = createIntBinaryTreeBalanced()
+        let traversal1 = inorderTraversalResult(binaryTreeRoot)
+        print("Traveral Closure - \(traversal1)")
+        print("preOrder Morris - \(preOrderMorrisTraversal(root: binaryTreeRoot1))")
+    }
+    public  func createIntBinaryTree()-> TreeNode<T> {
         /*
                  1
                 / \
@@ -16,15 +25,15 @@ struct TreeOperations<T> {
               / \
              4   5
          */
-        let treeNode1 = TreeNode(value: 1)
+        let treeNode1: TreeNode<Int> = TreeNode(value: 1)
         treeNode1.left = TreeNode(value: 2)
         treeNode1.right = TreeNode(value: 3)
         treeNode1.left?.left = TreeNode(value: 4)
         treeNode1.left?.right = TreeNode(value: 5)
-        return treeNode1
+        return treeNode1 as! TreeNode<T>
     }
 
-    public  func createIntBinaryTreeBalanced()-> TreeNode<Int> {
+    public  func createIntBinaryTreeBalanced()-> TreeNode<T> {
         /*
                   1
                 /   \
@@ -39,7 +48,54 @@ struct TreeOperations<T> {
         treeNode1.left?.right = TreeNode(value: 5)
         treeNode1.right?.left = TreeNode(value: 6)
         treeNode1.right?.right = TreeNode(value: 7)
-        return treeNode1
+        return treeNode1 as! TreeNode<T>
+    }
+
+    func inorderTraversal(_ root: TreeNode<T>?) -> [T] {
+
+        var result: [T] = []
+        inOrderTraversalTraversalRecursionResultINOUT(root: root, result: &result)
+        return result
+    }
+    func inorderTraversalResult(_ root: TreeNode<T>?) -> [T] {
+
+        var result: [T] = []
+        inOrderTraversalTraversalRecursionResult(root: root) {
+            result.append($0)
+        }
+        return result
+    }
+    /*
+    extension TreeNode {
+
+        /**
+        Will be called recursively
+        until the whole tree is traversed.
+        */
+        func traverseInOrder(_ visit: (Int) -> Void) {
+
+            // In order starts at the left node
+            left?.traverseInOrder(visit)
+
+            // Then the current value
+            visit(val)
+
+            // And last the right node
+            right?.traverseInOrder(visit)
+        }
+    }*/
+    func inOrderTraversalTraversalRecursionResultINOUT(root: TreeNode<T>?, result: inout [T]) {
+        guard let root = root else { return }
+        inOrderTraversalTraversalRecursionResultINOUT(root: root.left, result: &result)
+        result.append(root.data)
+        inOrderTraversalTraversalRecursionResultINOUT(root: root.right, result: &result)
+    }
+
+    func inOrderTraversalTraversalRecursionResult(root: TreeNode<T>?, result: ((T) -> Void)) {
+        guard let root = root else { return }
+        inOrderTraversalTraversalRecursionResult(root: root.left, result: result)
+        result(root.data)
+        inOrderTraversalTraversalRecursionResult(root: root.right, result: result)
     }
 
     func inOrderTraversalUsingRecusrion(root: TreeNode<T>?) {
@@ -103,6 +159,22 @@ struct TreeOperations<T> {
     }
 
     func preOrderTraversal(root: TreeNode<T>) {
+        let current: TreeNode<T>? = root
+        var stack = Stack<TreeNode<T>>()
+        stack.push(current!)
+        while !stack.isEmpty() {
+            let node = stack.pop()!
+            print(node.data)
+            if let right = node.right {
+                stack.push(right)
+            }
+            if let left = node.right {
+                stack.push(left)
+            }
+        }
+    }
+
+    func preOrderTraversal2(root: TreeNode<T>) {
         var current: TreeNode<T>? = root
         var stack = Stack<TreeNode<T>>()
         while current != nil {
@@ -138,6 +210,62 @@ struct TreeOperations<T> {
                 tempStack.push(left)
             }
         }
+    }
+
+    func inorderMorrisTraversal(root: TreeNode<T>?) -> [T] {
+        var result = [T]()
+        var current = root
+        if current == nil {
+            return result
+        }
+        while current != nil {
+            if current?.left == nil {
+                result.append(current!.data)
+                current = current?.right
+            } else {
+                var pred = current?.left
+                while pred?.right != nil && pred?.right !== current {
+                    pred = pred?.right
+                }
+                if pred?.right === current {
+                    result.append(current!.data)
+                    pred?.right = nil
+                    current = current?.right
+                } else {
+                    pred?.right = current
+                    current = current?.left
+                }
+            }
+        }
+        return result
+
+    }
+    func preOrderMorrisTraversal(root: TreeNode<T>?) {
+        var current: TreeNode<T>? = root
+        if root == nil {
+            return
+        }
+
+        while current != nil {
+            if current?.left == nil {
+                print(current?.data)
+                current = current?.right
+            } else {
+                var pred = current?.left
+                while pred?.right != nil && pred?.right !== current {
+                    pred = pred?.right
+                }
+                if pred?.right === current {
+                    pred?.right = nil
+                    current = current?.right
+                } else {
+                    print(current?.data)
+                    pred?.right = current
+                    current = current?.left
+                }
+            }
+        }
+
     }
 
     func levelOrderTraversalUsingQueue(root: TreeNode<T>?) {

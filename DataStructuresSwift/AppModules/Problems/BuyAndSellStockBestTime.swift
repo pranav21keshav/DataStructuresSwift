@@ -36,3 +36,23 @@ import Foundation
  0 <= prices[i] <= 104
 
  */
+import Foundation
+
+struct BuyAndSellStockBestTime {
+
+    init() {
+        print("\n------> buyAndSellStockBestTime")
+    }
+
+    public func buyAndSellStockBestTime(prices: [Int]) {
+        var minimum = prices[0]
+        var result = 0
+
+        for index in 1..<prices.count {
+            minimum = min(prices[index], minimum)
+            let value = prices[index] - minimum
+            result = value > result ? value : result
+        }
+        print("--------> Maximum profit in \(prices) is \(result)")
+    }
+}
