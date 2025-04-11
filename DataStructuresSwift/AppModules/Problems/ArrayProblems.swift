@@ -33,6 +33,8 @@ struct ArrayProblems {
         print(" Subsequences with unique combination [1, 1, 1, 2, 2] with sum 4 - ", subsequenceUniqueCombinationsForGivenSumLoop(nums: [1, 1, 1, 2, 2], sum: 4))
         print(" Permutations recursoion - [1, 2, 3] - ", perumations(nums: [1, 2, 3]))
         print(" n queen optimal with board size 4 - ", nQueensOptimal(boardSize: 4))
+        print(" 17th permutation in sequence 4 is - \(kthPermuationSequenceFor(number: 4, kth: 17))")
+        print(" 80th permutation in sequence 6 is - \(kthPermuationSequenceFor(number: 6, kth: 80))")
     }
     func kthSmallestPriotityQueue() {}
 
@@ -802,7 +804,7 @@ struct ArrayProblems {
     //Auxiliary Space: O(n)
     // Input n=4
     // Output: [[".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ..Q.]
-    func nQueensOptimal(boardSize: Int) {
+    func nQueensOptimal(boardSize: Int) -> [[String]] {
         var initialRowData = [String](repeating: ".", count: 4)
         var board = [[String]](repeating: initialRowData, count: 4)
         var result = [[String]]()
@@ -810,6 +812,7 @@ struct ArrayProblems {
         var lowerDiagonal = [Bool](repeating: false, count: 2 * boardSize - 1)
         var upperDiagonal = [Bool](repeating: false, count: 2 * boardSize - 1)
         solveNQueensRecursion(result: &result, board: &board, column: 0, leftRow: &leftRow, lowerDiagonal: &lowerDiagonal, upperDiagonal: &upperDiagonal)
+        return result
     }
 
     func solveNQueensRecursion(
@@ -845,4 +848,115 @@ struct ArrayProblems {
             }
         }
     }
+
+    // The set [1, 2, ..n] contains n! unique permutations
+    // Given n and k, return kth permuation sequence
+    // Ex - 1, Input n = 3, k = 3, Output - "213"
+    // Ex - 2, Input n = 4, k = 9, Output - "2314"
+    // Ex - 3, Input n = 3, k = 1, Output - "123"
+
+    // Check it's time complexity
+    // SC - O(n)
+    func kthPermuationSequenceFor(number: Int, kth: Int) -> Int {
+        var fact = 1
+        var numbers = [Int]()
+        for i in 1..<number {
+            fact *= i
+            numbers.append(i)
+        }
+        numbers.append(number)
+        var kth = kth - 1
+        let multiplier = 10
+        var result: Int = 0
+        while true {
+            let index = kth / fact
+            result = (result * multiplier) + numbers[index]
+            numbers.remove(at: index)
+            if numbers.isEmpty {
+                break
+            }
+            kth = kth % fact
+            fact /= numbers.count
+        }
+        return result
+    }
+
+    /*
+     Consider a rat placed at position (0, 0) in an n x n square matrix mat. The rat's goal is to reach the destination at position (n-1, n-1). The rat can move in four possible directions: 'U'(up), 'D'(down), 'L' (left), 'R' (right).
+
+     The matrix contains only two possible values:
+
+     0: A blocked cell through which the rat cannot travel.
+     1: A free cell that the rat can pass through.
+     Note: In a path, no cell can be visited more than one time. If the source cell is 0, the rat cannot move to any other cell. In case of no path, return an empty list.+
+
+     The task is to find all possible paths the rat can take to reach the destination, starting from (0, 0) and ending at (n-1, n-1), under the condition that the rat cannot revisit any cell along the same path. Furthermore, the rat can only move to adjacent cells that are within the bounds of the matrix and not blocked.
+
+     Return the final result vector in lexicographically smallest order.
+
+     Examples:
+
+     Input: mat[][] = [[1, 0, 0, 0], [1, 1, 0, 1], [1, 1, 0, 0], [0, 1, 1, 1]]
+     Output: ["DDRDRR", "DRDDRR"]
+     Explanation: The rat can reach the destination at (3, 3) from (0, 0) by two paths - DRDDRR and DDRDRR, when printed in sorted order we get DDRDRR DRDDRR.
+     Input: mat[][] = [[1, 0], [1, 0]]
+     Output: []
+     */
+
+    func ratInMaze(maze: inout [[Int]]) {
+
+        let xDirection = [0, -1, 1, 0]
+        let yDirection = [1, 0, 0, -1]
+    }
+
+    func ratInMazeRecursuion(
+        maze: inout [[Int]],
+        answer: inout [String],
+        current: String,
+        visited: inout [[Bool]],
+        row: Int,
+        column: Int,
+        xDirection: [Int],
+        yDirection: [Int]
+    ) {
+        let maxRowCount = maze.count
+        let maxColumnCount = maze[row].count
+        if row == maxRowCount - 1 && column == maxColumnCount - 1 {
+            answer.append(current)
+            return
+        }
+        let order = "DLRU"
+        for index in 0..<4 {
+            let nextRow = row + xDirection[index]
+            let nextColum = column + yDirection[index]
+            if (0..<maxRowCount).contains(nextRow) &&
+                (0..<maxColumnCount).contains(nextColum) &&
+                !visited[nextRow][nextColum] &&
+                maze[nextRow][nextColum] == 1 {
+                visited[row][column] = true
+                let currentOrder = current + order[index]
+                ratInMazeRecursuion(
+                    maze: &maze,
+                    answer: &answer,
+                    current: currentOrder,
+                    visited: &visited,
+                    row: nextRow,
+                    column: nextColum,
+                    xDirection: xDirection,
+                    yDirection: yDirection
+                )
+                visited[row][column] = false
+            }
+        }
+
+    }
+
+    // Count inversions in array
+    // Given an array of integers find numbers of pairs where left is greater than right
+    // Example - [5, 3, 2, 4, 1]
+    // Answer - [[5,3], [5, 2], [5, 4], [5, 1], [3, 2], [3, 1], [4, 1]]
+    // Brute force using two loops O(N^2)
+
+    // Reverse pairs
+    // Maximum product subarray
 }

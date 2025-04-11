@@ -81,30 +81,29 @@ struct Sorting<T: Comparable> {
         }
         return array
     }
-    
+
+    // TC - O(n*log(n))
+    // SC - O(n)
     func merge(array: inout [T], start: Int, middle: Int, end: Int) {
-        let leftSubArray = Array(array[start...middle])
-        let rightSubArray = Array(array[middle + 1...end])
-        var leftIndex = 0
-        var rightIndex = 0
-        var index = start
-        while leftIndex < leftSubArray.count && rightIndex < rightSubArray.count {
-            if leftSubArray[leftIndex] < rightSubArray[rightIndex] {
-                array[index] = leftSubArray[leftIndex]
+        let temp = array
+        var leftIndex = start
+        var rightIndex = middle + 1
+        while leftIndex <= middle && rightIndex <= end {
+            if temp[leftIndex] <= temp[rightIndex] {
+                array[leftIndex] = temp[leftIndex]
                 leftIndex += 1
             } else {
-                array[index] = rightSubArray[rightIndex]
-                rightIndex += 2
+                array[rightIndex] = temp[rightIndex]
+                rightIndex += 1
             }
-            index += 1
         }
-        while leftIndex < leftSubArray.count {
-            array[index] = leftSubArray[leftIndex]
+        while leftIndex <= middle {
+            array[leftIndex] = temp[leftIndex]
             leftIndex += 1
         }
 
-        while rightIndex < rightSubArray.count {
-            array[index] = rightSubArray[rightIndex]
+        while rightIndex <= end {
+            array[rightIndex] = temp[rightIndex]
             rightIndex += 1
         }
     }
