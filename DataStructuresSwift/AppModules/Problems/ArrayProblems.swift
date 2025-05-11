@@ -951,6 +951,126 @@ struct ArrayProblems {
 
     }
 
+    /*
+     You are given an integer array nums and a positive integer k.
+
+     Return the number of subarrays where the maximum element of nums appears at least k times in that subarray.
+
+     A subarray is a contiguous sequence of elements within an array.
+
+      
+
+     Example 1:
+
+     Input: nums = [1,3,2,3,3], k = 2
+     Output: 6
+     Explanation: The subarrays that contain the element 3 at least 2 times are: [1,3,2,3], [1,3,2,3,3], [3,2,3], [3,2,3,3], [2,3,3] and [3,3].
+     Example 2:
+
+     Input: nums = [1,4,2,1], k = 3
+     Output: 0
+     Explanation: No subarray contains the element 4 at least 3 times.
+      
+
+     Constraints:
+
+     1 <= nums.length <= 105
+     1 <= nums[i] <= 106
+     1 <= k <= 105
+     */
+    
+    // O(n^2)
+    func countSubarraysUnoptimized(nums: [Int], k: Int) -> Int {
+        let count = nums.count
+        var result = 0
+        let max = nums.max()
+        
+        
+        for i in 0..<count  {
+            var maxCount = 0
+            if nums[i] == max {
+                maxCount += 1
+            }
+            if maxCount == k {
+                result += count - i
+                continue
+            }
+            for j in i + 1..<count {
+                if nums[j] == max {
+                    maxCount += 1
+                }
+                if maxCount == k {
+                    result += count - j
+                    break
+                }
+            }
+        }
+        return result
+    }
+    
+    // O(n)
+    func countSubarraysOptimized(nums: [Int], k: Int) -> Int {
+        let count = nums.count
+        var result = 0
+        let max = nums.max()
+        var left = 0
+        var right = 0
+        var maxCount = 0
+        while right  < count {
+            if nums[right] == max {
+                maxCount += 1
+            }
+            while maxCount == k {
+                if nums[left] == max {
+                    maxCount -= 1
+                }
+                left += 1
+            }
+            result += left
+            right += 1
+        }
+        
+        
+        return result
+    }
+    
+    /*
+    Y ou are given an array of 0s and 1s in random order. Segregate 0s on left side and 1s on right side of the array [Basically you have to sort the array]. Traverse array only once.
+
+     Input :  [0, 1, 0, 1, 0, 0, 1, 1, 1, 0]
+     Output :  [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+
+
+     Input :  [0, 1, 0]
+     Output :  [0, 0, 1]
+
+
+     Input :  [1, 1]
+     Output :  [1, 1]
+
+
+     Input :  [0]
+     Output :  [0]
+     */
+    func sortZerosAndOnes(nums: inout [Int]) {
+        var left = 0
+        var right = nums.count - 1
+        
+        while left < right {
+            while nums[left] == 0 {
+                left += 1
+            }
+            while nums[right] == 1 {
+                right -= 1
+            }
+            if left < right {
+                nums.swapAt(left, right)
+                left += 1
+                right -= 1
+            }
+        }
+        
+    }
     // Count inversions in array
     // Given an array of integers find numbers of pairs where left is greater than right
     // Example - [5, 3, 2, 4, 1]
@@ -959,4 +1079,53 @@ struct ArrayProblems {
 
     // Reverse pairs
     // Maximum product subarray
+    
+    /*
+     Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+
+     We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+     You must solve this problem without using the library's sort function.
+
+      
+
+     Example 1:
+
+     Input: nums = [2,0,2,1,1,0]
+     Output: [0,0,1,1,2,2]
+     Example 2:
+
+     Input: nums = [2,0,1]
+     Output: [0,1,2]
+      
+
+     Constraints:
+
+     n == nums.length
+     1 <= n <= 300
+     nums[i] is either 0, 1, or 2.
+      
+
+     Follow up: Could you come up with a one-pass algorithm using only constant extra space?
+     */
+    
+    // O(n), Naive approach sorting O(nlogn)
+    func sortColors(_ nums: inout [Int]) {
+        var low = 0
+        var mid = 0
+        var high = nums.count - 1
+        while mid <= high {
+            if nums[mid] == 0 {
+                nums.swapAt(mid, low)
+                mid += 1
+                low += 1
+            } else if nums[mid] == 1 {
+                mid += 1
+            } else {
+                nums.swapAt(mid, high)
+                mid += 1
+                high -= 1
+            }
+        }
+    }
 }

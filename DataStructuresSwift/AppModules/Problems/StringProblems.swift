@@ -124,6 +124,7 @@ struct StringProblems {
     Time complexity O(n) where n is the amount of elements in nums.
     Space complexity O(n) where n is the amount of elements in nums.
     */
+    // This is not a correct solution
     func wordBreak(string: String, wordDictionary: [String]) -> Bool {
 
         var string = string
@@ -137,6 +138,27 @@ struct StringProblems {
         }
 
         return string.isEmpty
+    }
+    
+    func wordBreak(s: String, wordDict: [String]) -> Bool {
+        let wordSet = Set(wordDict)
+        let n = s.count
+        var dp = Array(repeating: false, count: n + 1)
+        dp[0] = true
+        
+        let chars = Array(s)
+        
+        for i in 1...n {
+            for j in 0..<i {
+                let substring = String(chars[j..<i])
+                if dp[j] && wordSet.contains(substring) {
+                    dp[i] = true
+                    break
+                }
+            }
+        }
+        
+        return dp[n]
     }
     /*
      Longest substring without repeating characters
