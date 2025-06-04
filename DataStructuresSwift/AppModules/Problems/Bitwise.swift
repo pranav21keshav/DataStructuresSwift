@@ -206,6 +206,17 @@ struct Bitwise {
         return count
     }
 
+    // O(log N) Brian Keninghan
+    func countSetBitsBK(number: Int) -> Int {
+        var count = 0
+        var number = number
+        while number > 0 {
+            count += 1
+            number = number & number - 1
+        }
+        return count
+    }
+
     // O(n)
     func numberOccuringOddTimes(numbers: [Int]) -> Int {
         var number = 0

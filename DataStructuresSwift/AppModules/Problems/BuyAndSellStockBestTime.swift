@@ -89,8 +89,8 @@ struct BuyAndSellStockBestTime {
     func buyAndSellStockBestTimeII(prices: [Int]) -> Int {
         var res = 0
         for i in 0..<prices.count - 1 {
-            if prices[i+1] > prices[i] {
-                res += prices[i+1] - prices[i]
+            if prices[i + 1] > prices[i] {
+                res += prices[i + 1] - prices[i]
             }
         }
         return res

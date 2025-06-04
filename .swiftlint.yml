@@ -181,6 +181,8 @@ identifier_name:
   excluded:
     - id
     - i
+    - j
+    - k
     - n
     - me
     - x

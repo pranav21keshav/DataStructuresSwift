@@ -10,6 +10,8 @@
 		177F079FD7129316A29F8FAD /* Pods_DataStructuresSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8E4380F010EE8EA482F354 /* Pods_DataStructuresSwiftTests.framework */; };
 		56106C900CAF57FF69CB80D2 /* Pods_DataStructuresSwift_DataStructuresSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC2FB30B0D7B31DEB474CAF /* Pods_DataStructuresSwift_DataStructuresSwiftUITests.framework */; };
 		74540FFF7127A15B19F40167 /* Pods_DataStructuresSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA722AC99DFA2E25F8852B1E /* Pods_DataStructuresSwift.framework */; };
+		BD1262AA2DD275FC00FDC5C5 /* ReviseMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1262A92DD275FC00FDC5C5 /* ReviseMore.swift */; };
+		BD213C8F2DD64CD300E0C095 /* Logical.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD213C8E2DD64CD300E0C095 /* Logical.swift */; };
 		BD2AD73A2C4D1BCD00B0DE4B /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2AD7392C4D1BCD00B0DE4B /* PriorityQueue.swift */; };
 		BD33CA582C26E20900ABC0C7 /* KMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33CA572C26E20900ABC0C7 /* KMP.swift */; };
 		BD33CA5A2C271C7700ABC0C7 /* Bitwise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33CA592C271C7700ABC0C7 /* Bitwise.swift */; };
@@ -44,6 +46,8 @@
 		BDAF04FD2C25C96100E20AB4 /* KadaneAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */; };
 		BDAF04FF2C25CB8E00E20AB4 /* ArrayProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */; };
 		BDAF05012C25CF6B00E20AB4 /* StringProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */; };
+		BDC151B12DD7A11F00597190 /* BinaryExponentiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC151B02DD7A11F00597190 /* BinaryExponentiation.swift */; };
+		BDD9DD392DECD81D00613526 /* Array2DProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD9DD382DECD81D00613526 /* Array2DProblems.swift */; };
 		BDDB2CB12B70B2620088D746 /* BuyTwoChocolates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */; };
 		BDDB2CB32B70B9B90088D746 /* ElementCountInArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */; };
 		BDDFEA1B2D7F5CF700CF4FC0 /* DynamicProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDFEA1A2D7F5CF700CF4FC0 /* DynamicProblem.swift */; };
@@ -76,6 +80,8 @@
 		3C8E4380F010EE8EA482F354 /* Pods_DataStructuresSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataStructuresSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B62FC7C86FBBCB06D29D5D /* Pods-DataStructuresSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwift.release.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwift/Pods-DataStructuresSwift.release.xcconfig"; sourceTree = "<group>"; };
 		B6F41D076C22DEB1910B853C /* Pods-DataStructuresSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwiftTests/Pods-DataStructuresSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BD1262A92DD275FC00FDC5C5 /* ReviseMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviseMore.swift; sourceTree = "<group>"; };
+		BD213C8E2DD64CD300E0C095 /* Logical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logical.swift; sourceTree = "<group>"; };
 		BD2AD7392C4D1BCD00B0DE4B /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		BD33CA572C26E20900ABC0C7 /* KMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMP.swift; sourceTree = "<group>"; };
 		BD33CA592C271C7700ABC0C7 /* Bitwise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitwise.swift; sourceTree = "<group>"; };
@@ -116,6 +122,8 @@
 		BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KadaneAlgorithm.swift; sourceTree = "<group>"; };
 		BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayProblems.swift; sourceTree = "<group>"; };
 		BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProblems.swift; sourceTree = "<group>"; };
+		BDC151B02DD7A11F00597190 /* BinaryExponentiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryExponentiation.swift; sourceTree = "<group>"; };
+		BDD9DD382DECD81D00613526 /* Array2DProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2DProblems.swift; sourceTree = "<group>"; };
 		BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTwoChocolates.swift; sourceTree = "<group>"; };
 		BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCountInArray.swift; sourceTree = "<group>"; };
 		BDDFEA1A2D7F5CF700CF4FC0 /* DynamicProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProblem.swift; sourceTree = "<group>"; };
@@ -184,6 +192,7 @@
 				BD33CA572C26E20900ABC0C7 /* KMP.swift */,
 				BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */,
 				BD57AC282C42F5BB00CA363A /* QuickSelect.swift */,
+				BDC151B02DD7A11F00597190 /* BinaryExponentiation.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -300,6 +309,9 @@
 				BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */,
 				BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */,
 				BD33CA592C271C7700ABC0C7 /* Bitwise.swift */,
+				BD1262A92DD275FC00FDC5C5 /* ReviseMore.swift */,
+				BD213C8E2DD64CD300E0C095 /* Logical.swift */,
+				BDD9DD382DECD81D00613526 /* Array2DProblems.swift */,
 			);
 			path = Problems;
 			sourceTree = "<group>";
@@ -545,11 +557,15 @@
 				BDF7E82B2A51D77A007C2B21 /* CircularQueue.swift in Sources */,
 				BD677B642438B7C200029D43 /* Queue.swift in Sources */,
 				BDA8AE9B243E4B06003B7D7D /* LinkedListProblems.swift in Sources */,
+				BD213C8F2DD64CD300E0C095 /* Logical.swift in Sources */,
 				BDA8AE99243E4AED003B7D7D /* GenericProblems.swift in Sources */,
+				BDC151B12DD7A11F00597190 /* BinaryExponentiation.swift in Sources */,
+				BD1262AA2DD275FC00FDC5C5 /* ReviseMore.swift in Sources */,
 				BDA4151A2C399B43008C4DC8 /* Graph.swift in Sources */,
 				BD9F47B02433B8AF00B9F016 /* Node.swift in Sources */,
 				BD3DEF052B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift in Sources */,
 				BDEEAF9F2434C1130062F01D /* SinglyLinkedList.swift in Sources */,
+				BDD9DD392DECD81D00613526 /* Array2DProblems.swift in Sources */,
 				BD33CA5A2C271C7700ABC0C7 /* Bitwise.swift in Sources */,
 				BD9F47AE2433B81D00B9F016 /* DataStructureViewController.swift in Sources */,
 				BDAF04FD2C25C96100E20AB4 /* KadaneAlgorithm.swift in Sources */,

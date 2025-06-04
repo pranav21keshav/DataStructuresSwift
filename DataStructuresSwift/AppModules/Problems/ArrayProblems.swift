@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// swiftlint:disable file_length
 struct ArrayProblems {
     init() {
         print("\n ---------> Pair Count Unsorted Array <---------")
@@ -985,8 +986,7 @@ struct ArrayProblems {
         var result = 0
         let max = nums.max()
         
-        
-        for i in 0..<count  {
+        for i in 0..<count {
             var maxCount = 0
             if nums[i] == max {
                 maxCount += 1
@@ -1016,7 +1016,7 @@ struct ArrayProblems {
         var left = 0
         var right = 0
         var maxCount = 0
-        while right  < count {
+        while right < count {
             if nums[right] == max {
                 maxCount += 1
             }
@@ -1029,8 +1029,7 @@ struct ArrayProblems {
             result += left
             right += 1
         }
-        
-        
+
         return result
     }
     
@@ -1127,5 +1126,154 @@ struct ArrayProblems {
                 high -= 1
             }
         }
+    }
+
+    /*
+     Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+     The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+     You must write an algorithm that runs in O(n) time and without using the division operation.
+
+
+
+     Example 1:
+
+     Input: nums = [1,2,3,4]
+     Output: [24,12,8,6]
+     Example 2:
+
+     Input: nums = [-1,1,0,-3,3]
+     Output: [0,0,9,0,0]
+
+
+     Constraints:
+
+     2 <= nums.length <= 105
+     -30 <= nums[i] <= 30
+     The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer.
+
+     */
+
+    func productExceptSelf(_ nums: [Int]) -> [Int] {
+        var result = Array(repeating: 0, count: nums.count)
+        var zeroes = 0
+        var index = -1
+        var product = 1
+        for i in 0..<nums.count {
+            if nums[i] == 0 {
+                zeroes += 1
+                index = i
+                if zeroes > 1 {
+                    return result
+                }
+                
+            } else {
+                product *= nums[i]
+            }
+        }
+        
+        if zeroes == 1 {
+            result[index] = product
+        } else {
+            for i in 0..<nums.count {
+                result[i] = product / nums[i]
+            }
+        }
+        
+        return result
+        
+    }
+
+    /*
+     Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+     The time complexity of the solution should be O(n)
+
+
+     Example 1:
+
+     Input: nums = [1,2,3,4,5,6,7], k = 3
+     Output: [5,6,7,1,2,3,4]
+     Explanation:
+     rotate 1 steps to the right: [7,1,2,3,4,5,6]
+     rotate 2 steps to the right: [6,7,1,2,3,4,5]
+     rotate 3 steps to the right: [5,6,7,1,2,3,4]
+     Example 2:
+
+     Input: nums = [-1,-100,3,99], k = 2
+     Output: [3,99,-1,-100]
+     Explanation:
+     rotate 1 steps to the right: [99,-1,-100,3]
+     rotate 2 steps to the right: [3,99,-1,-100]
+
+
+     Constraints:
+
+     1 <= nums.length <= 105
+     -231 <= nums[i] <= 231 - 1
+     0 <= k <= 105
+     */
+
+    // TC - O(n)
+    // SC - O(1)
+    func rotateReverse(_ nums: inout [Int], _ k: Int) {
+        let count = nums.count
+        let k = k % count
+        guard k != 0 else {
+            return
+        }
+        reverse(nums: &nums, start: 0, end: count - 1)
+        reverse(nums: &nums, start: 0, end: k - 1)
+        reverse(nums: &nums, start: k, end: count - 1)
+
+    }
+
+    func reverse(nums: inout [Int], start: Int, end: Int) {
+        var left = start
+        var right = end
+        while left < right {
+            let temp = nums[left]
+            nums[left] = nums[right]
+            nums[right] = temp
+            left += 1
+            right -= 1
+        }
+    }
+
+    func rotate(_ nums: inout [Int], _ k: Int) {
+        
+        let count = nums.count
+        let k = k % count
+        let cycles = gcd(a: count, b: k)
+        guard cycles != 0 else {
+            return
+        }
+        for i in 0..<cycles {
+            var currentIndex = i
+            var currentElement = nums[i]
+            var nextIndex: Int
+            while true {
+                nextIndex = (currentIndex + k) % count
+                let nextElement = nums[nextIndex]
+                nums[nextIndex] = currentElement
+                currentElement = nextElement
+                currentIndex = nextIndex
+                if nextIndex == i {
+                    break
+                }
+            }
+        }
+        
+    }
+    
+    func gcd(a: Int, b: Int) -> Int {
+        var b = b
+        var a = a
+        while b != 0 {
+            let temp = b
+            b = a % b
+            a = temp
+        }
+        return a
     }
 }

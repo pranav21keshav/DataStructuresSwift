@@ -9,6 +9,29 @@
 import Foundation
 
 struct TreeProblems {
+    /*
+     Given the root of a binary tree, return the average value of the nodes on each level in the form of an array. Answers within 10-5 of the actual answer will be accepted.
+
+
+     Example 1:
+
+
+     Input: root = [3,9,20,null,null,15,7]
+     Output: [3.00000,14.50000,11.00000]
+     Explanation: The average value of nodes on level 0 is 3, on level 1 is 14.5, and on level 2 is 11.
+     Hence return [3, 14.5, 11].
+     Example 2:
+
+
+     Input: root = [3,9,20,15,7]
+     Output: [3.00000,14.50000,11.00000]
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [1, 104].
+     -231 <= Node.val <= 231 - 1
+     */
     func averageOfLevels(_ root: TreeNode<Int>?) -> [Double] {
         var queue = Queue<TreeNode<Int>>()
         guard let current = root else { return [] }
@@ -58,5 +81,59 @@ struct TreeProblems {
                 node.right = TreeNode(value: value)
             }
         }
+    }
+    /*
+     Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+
+     A leaf is a node with no children.
+
+
+
+     Example 1:
+
+
+     Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+     Output: true
+     Explanation: The root-to-leaf path with the target sum is shown.
+     Example 2:
+
+
+     Input: root = [1,2,3], targetSum = 5
+     Output: false
+     Explanation: There are two root-to-leaf paths in the tree:
+     (1 --> 2): The sum is 3.
+     (1 --> 3): The sum is 4.
+     There is no root-to-leaf path with sum = 5.
+     Example 3:
+
+     Input: root = [], targetSum = 0
+     Output: false
+     Explanation: Since the tree is empty, there are no root-to-leaf paths.
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [0, 5000].
+     -1000 <= Node.val <= 1000
+     -1000 <= targetSum <= 1000
+     */
+
+    func hasPathSum(_ root: TreeNode<Int>?, _ targetSum: Int) -> Bool {
+        guard let root = root else {
+            return false
+        }
+        let remaining = targetSum - root.data
+        if remaining == 0 && root.left == nil && root.right == nil {
+            return true
+        }
+        var left = false
+        var right = false
+        if root.left != nil {
+            left = hasPathSum(root.left, remaining)
+        }
+        if root.right != nil {
+            right = hasPathSum(root.right, remaining)
+        }
+        return left || right
     }
 }

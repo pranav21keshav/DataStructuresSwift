@@ -117,6 +117,10 @@ struct StringProblems {
 
      Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
      Output: false
+
+     Example 4:
+     Input: s = "bb", wordDict = ["a","b","bbb","bbbb"]
+     Output: false
      */
 
     /**
@@ -250,5 +254,110 @@ struct StringProblems {
                 current.remove(at: current.count - 1)
             }
         }
+    }
+
+    /*
+     Write a function to find the longest common prefix string amongst an array of strings.
+
+     If there is no common prefix, return an empty string "".
+
+
+
+     Example 1:
+
+     Input: strs = ["flower","flow","flight"]
+     Output: "fl"
+     Example 2:
+
+     Input: strs = ["dog","racecar","car"]
+     Output: ""
+     Explanation: There is no common prefix among the input strings.
+
+
+     Constraints:
+
+     1 <= strs.length <= 200
+     0 <= strs[i].length <= 200
+     */
+
+    func longestCommonPrefix(_ strs: [String]) -> String {
+        if strs.count < 2 {
+            return strs[0]
+        }
+        var commonPrefix = strs[0]
+        for i in 1..<strs.count {
+            commonPrefix = getCommonPrefix(string1: commonPrefix, string2: strs[i])
+            if commonPrefix.isEmpty {
+                break
+            }
+        }
+        return commonPrefix
+    }
+    func getCommonPrefix(string1: String, string2: String) -> String {
+        var commonPrefix = ""
+        let string1Array = Array(string1)
+        let string2Array = Array(string2)
+        let length = min(string1Array.count, string2Array.count)
+        for i in 0..<length {
+            if string1Array[i] == string2Array[i] {
+                commonPrefix.append(string1Array[i])
+            } else {
+                break
+            }
+        }
+        return commonPrefix
+    }
+    /*
+     Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+
+     For example:
+
+     A -> 1
+     B -> 2
+     C -> 3
+     ...
+     Z -> 26
+     AA -> 27
+     AB -> 28
+     ...
+
+
+     Example 1:
+
+     Input: columnNumber = 1
+     Output: "A"
+     Example 2:
+
+     Input: columnNumber = 28
+     Output: "AB"
+     Example 3:
+
+     Input: columnNumber = 701
+     Output: "ZY"
+
+
+     Constraints:
+
+     1 <= columnNumber <= 231 - 1
+     */
+
+    func convertToTitle(_ columnNumber: Int) -> String {
+        var columnNumber = columnNumber
+        var string: String = ""
+        while columnNumber > 0 {
+            let remainder = columnNumber % 26
+            if remainder == 0 {
+                string.insert("Z", at: string.startIndex)
+                columnNumber = (columnNumber / 26) - 1
+            } else {
+                let charIndex = remainder - 1 + Int(("A" as UnicodeScalar).value)
+                string.insert(Character(UnicodeScalar(charIndex)!), at: string.startIndex)
+                // string.append()
+                columnNumber /= 26
+            }
+            
+        }
+        // string = String(string.reversed())
+        return string
     }
 }
