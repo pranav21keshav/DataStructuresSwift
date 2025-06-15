@@ -210,6 +210,30 @@ struct TreeOperations<T: Comparable & Equatable> {
                 tempStack.push(left)
             }
         }
+        while !orderedStack.isEmpty() {
+            print(orderedStack.pop())
+        }
+    }
+
+    func postOrderIterativeOneStack(_ root: TreeNode<T>?) {
+        var stack: [TreeNode<T>] = []
+        var lastVisited: TreeNode<T>?
+        var current = root
+
+        while current != nil || !stack.isEmpty {
+            if let node = current {
+                stack.append(node)
+                current = node.left
+            } else {
+                let peek = stack.last!
+                if let right = peek.right, lastVisited !== right {
+                    current = right
+                } else {
+                    print(peek.data)
+                    lastVisited = stack.removeLast()
+                }
+            }
+        }
     }
 
     func inorderMorrisTraversal(root: TreeNode<T>?) -> [T] {

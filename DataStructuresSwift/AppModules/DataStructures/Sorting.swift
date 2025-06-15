@@ -10,6 +10,7 @@ import Foundation
 struct Sorting<T: Comparable> {
 
     // Time Complexity: O(N^2) - Worst case and average case
+    // Stable - No
     func selectionSort(array: inout [T]) -> [T] {
         for i in 0..<array.count - 1 {
             var minimumIndex = i
@@ -50,6 +51,7 @@ struct Sorting<T: Comparable> {
     }
 
     // Time Complexity: O(N^2) - Worst case and average case
+    // Best Case O(n)
     // Stable - Yes
     // In place
     // Method - Insertion

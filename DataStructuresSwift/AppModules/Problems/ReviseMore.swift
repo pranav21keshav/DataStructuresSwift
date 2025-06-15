@@ -83,7 +83,7 @@ struct ReviseMore {
          Otherwise, replace it with the next character in the alphabet. For example, 'a' is replaced with 'b', 'b' is replaced with 'c', and so on.
          Return the length of the resulting string after exactly t transformations.
 
-         Since the answer may be very large, return it modulo 109 + 7.
+         Since the answer may be very large, return it modulo 10^9 + 7.
 
 
 
@@ -126,6 +126,14 @@ struct ReviseMore {
          String after the first transformation: "babcl"
          Final Length of the string: The string is "babcl", which has 5 characters.
 
+
+         Example 3:
+
+         s =
+         "jqktcurgdvlibczdsvnsg"
+         t =
+         7517
+         output = 79033769
 
          Constraints:
 

@@ -16,25 +16,39 @@ import Foundation
 // 1. Random access is not allowed
 // 2. Not suitable for large data sets
 struct Queue<T> {
-    private var elements = [T]()
-    
+    private var head: Node<T>?
+    private var tail: Node<T>?
+    private var elementCount: Int = 0
+
     mutating func enqueue(_ element: T) {
-        elements.append(element)
-    }
-    mutating func dequeue() -> T? {
-        if elements.isEmpty {
-            return nil
-        } else {
-            return elements.removeFirst()
+        if head == nil {
+            head = Node(value: element)
+            tail = head
+            elementCount += 1
+            return
         }
+        tail?.next = Node(value: element)
+        tail = tail?.next
+        elementCount += 1
     }
+
+    mutating func dequeue() -> T? {
+        let data = head?.data
+        head = head?.next
+        elementCount -= 1
+        return data
+
+    }
+
     func front() -> T? {
-        return elements.first
+        return head?.data
     }
+
     func isEmpty() -> Bool {
-        return elements.isEmpty
+        return head == nil
     }
+
     func count() -> Int {
-        return elements.count
+        elementCount
     }
 }

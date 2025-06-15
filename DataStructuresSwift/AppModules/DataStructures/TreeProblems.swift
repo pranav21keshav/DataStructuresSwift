@@ -8,7 +8,31 @@
 
 import Foundation
 
-struct TreeProblems {
+class TreeProblems {
+    var solution = [[Int]]()
+
+    init(solution: [[Int]] = [[Int]]()) {
+        self.solution = solution
+        var root: TreeNode<Int>? = createIntBinaryTree()
+        print("Find Leaves - \(findLeaves(&root)), root - \(root)" )
+    }
+
+    public  func createIntBinaryTree() -> TreeNode<Int> {
+        /*
+                  1
+                /   \
+               2     3
+              / \
+             4   5
+         */
+        let treeNode1 = TreeNode(value: 1)
+        treeNode1.left = TreeNode(value: 2)
+        treeNode1.right = TreeNode(value: 3)
+        treeNode1.left?.left = TreeNode(value: 4)
+        treeNode1.left?.right = TreeNode(value: 5)
+
+        return treeNode1
+    }
     /*
      Given the root of a binary tree, return the average value of the nodes on each level in the form of an array. Answers within 10-5 of the actual answer will be accepted.
 
@@ -135,5 +159,54 @@ struct TreeProblems {
             right = hasPathSum(root.right, remaining)
         }
         return left || right
+    }
+
+    /*
+     Find Leaves of Binary Tree
+
+    Given the root of a binary tree, collect a tree's nodes as if you were doing this:
+
+    Collect all the leaf nodes.
+    Remove all the leaf nodes.
+    Repeat until the tree is empty.
+
+     Input: root = [1,2,3,4,5]
+     Output: [[4,5,3],[2],[1]]
+     Explanation:
+     [[3,5,4],[2],[1]] and [[3,4,5],[2],[1]] are also considered correct answers since per each level it does not matter the order on which elements are returned.
+     Example 2:
+
+     Input: root = [1]
+     Output: [[1]]
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [1, 100].
+     -100 <= Node.val <= 100
+
+     */
+
+    func findLeaves(_ root: inout TreeNode<Int>?) -> [[Int]] {
+        findHeight(root: &root)
+        return solution
+    }
+
+    @discardableResult
+    func findHeight(root: inout  TreeNode<Int>?) -> Int {
+        if root == nil {
+            return -1
+        }
+
+        let leftHeight = findHeight(root: &root!.left)
+        let rightHeight = findHeight(root: &root!.right)
+
+        let height = max(leftHeight, rightHeight) + 1
+        if solution.count == height {
+            solution.insert([Int](), at: height)
+        }
+        solution[height].append(root!.data)
+        root = nil
+        return height
     }
 }

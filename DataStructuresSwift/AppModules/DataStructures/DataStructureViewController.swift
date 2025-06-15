@@ -61,6 +61,7 @@ class DataStructureViewController: UIViewController {
         _ = StringProblems()
         _ = TreeOperations<Int>()
         _ = DynamicProblem()
+        _ = TreeProblems()
     }
     /*
     // MARK: - Navigation

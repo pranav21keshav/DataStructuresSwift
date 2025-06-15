@@ -32,6 +32,13 @@ struct DynamicProblem {
         print("Unique Path recursion mem0 5x5 - \(uniquePathRecursionMemo(row: 5, column: 5))")
         print("Unique Path recursion tabulation 5x5 - \(uniquePathRecursionTabulation(row: 5, column: 5))")
         print("Unique Path space optimized 5x5 - \(uniquePathRecursionSpaceOptimized(row: 5, column: 5))")
+        var x = [
+            [1, 2, 5, 7],
+            [10, 20, 30, 40],
+            [1, 1, 1, 1],
+            [4, 5, 6, 7]
+        ]
+        print("Min path - \(x) - \(minimumPathGridRecursionSpace(grid: x))")
 
     }
 
@@ -502,9 +509,13 @@ struct DynamicProblem {
      Input: grid = [[1,2,3],[4,5,6]]
      Output: 12
 
+     Input
      [[3,8,6,0,5,9,9,6,3,4,0,5,7,3,9,3],[0,9,2,5,5,4,9,1,4,6,9,5,6,7,3,2],[8,2,2,3,3,3,1,6,9,1,1,6,6,2,1,9],[1,3,6,9,9,5,0,3,4,9,1,0,9,6,2,7],[8,6,2,2,1,3,0,0,7,2,7,5,4,8,4,8],[4,1,9,5,8,9,9,2,0,2,5,1,8,7,0,9],[6,2,1,7,8,1,8,5,5,7,0,2,5,7,2,1],[8,1,7,6,2,8,1,2,2,6,4,0,5,4,1,3],[9,2,1,7,6,1,4,3,8,6,5,5,3,9,7,3],[0,6,0,2,4,3,7,6,1,3,8,6,9,0,0,8],[4,3,7,2,4,3,6,4,0,3,9,5,3,6,9,3],[2,1,8,8,4,5,6,5,8,7,3,7,7,5,8,3],[0,7,6,6,1,2,0,3,5,0,8,0,8,7,4,3],[0,4,3,4,9,0,1,9,7,7,8,6,4,6,9,5],[6,5,1,9,9,2,2,7,4,2,7,2,2,3,7,2],[7,1,9,6,1,2,7,0,9,6,6,4,4,5,1,0],[3,4,9,2,8,3,1,2,6,9,7,0,2,4,2,0],[5,1,8,8,4,6,8,5,2,4,1,6,2,2,9,7]]
 
      Output - 83
+
+     Inout - [[1, 2, 5, 7], [10, 20, 30, 40], [1, 1, 1, 1], [4, 5, 6, 7]]
+     Output - 22
 
      */
 
@@ -615,4 +626,75 @@ struct DynamicProblem {
 
      triangle = [[1], [2, 3], [3, 6, 7], [8, 9, 6, 10]]
      */
+
+    //TC - O(2 ^ n)
+   // SC - O(n)
+    func minimumPathTriangularGridRecursion(grid: [[Int]], i: Int, j: Int) -> Int {
+        if i == grid.count - 1 {
+            return grid[i][j]
+        }
+        let bottom = grid[i][j] + minimumPathTriangularGridRecursion(grid: grid, i: i + 1, j: j)
+        let diagonal = grid[i][j] + minimumPathTriangularGridRecursion(grid: grid, i: i + 1, j: j + 1)
+        return min(bottom, diagonal)
+    }
+
+    func minimumPathTriangularGridMemoization(grid: [[Int]]) -> Int {
+        let column = Array(repeating: -1, count: grid[grid.count - 1].count)
+        var dp = Array(repeating: column, count: grid.count)
+        return minimumPathTriangularGridMemoizationRecursion(grid: grid, dp: &dp, i: 0, j: 0)
+    }
+
+    //
+    func minimumPathTriangularGridMemoizationRecursion(grid: [[Int]], dp: inout [[Int]], i: Int, j: Int) -> Int {
+        if i == grid.count - 1 {
+            return grid[i][j]
+        }
+        guard dp[i][j] == -1 else {
+            return dp[i][j]
+        }
+        let bottom = grid[i][j] + minimumPathTriangularGridRecursion(grid: grid, i: i + 1, j: j)
+        let diagonal = grid[i][j] + minimumPathTriangularGridRecursion(grid: grid, i: i + 1, j: j + 1)
+        dp[i][j] = min(bottom, diagonal)
+        return dp[i][j]
+    }
+
+    func minimumPathTriangularGridTabulation(grid: [[Int]]) -> Int {
+        let maxColumnCount = grid[grid.count - 1].count
+        let rowCount = grid.count
+        let column = Array(repeating: 0, count: maxColumnCount)
+        var dp = Array(repeating: column, count: rowCount)
+        for column in 0..<maxColumnCount {
+            dp[rowCount - 1][column] = grid[rowCount - 1][column]
+        }
+
+        for i in stride(from: rowCount - 2, through: 0, by: -1) {
+            for j in stride(from: i, through: 0, by: -1) {
+                let down = grid[i][j] + dp[i + 1][j]
+                let diagonal = grid[i][j] + dp[i + 1][j + 1]
+                dp[i][j] = min(down, diagonal)
+
+            }
+        }
+        return dp[0][0]
+    }
+
+    func minimumPathTriangularGridSpaceOptimizrd(grid: [[Int]]) -> Int {
+        let count = grid.count
+        var front = Array(repeating: 0, count: count)
+        var current = Array(repeating: 0, count: count)
+        for j in 0..<count {
+            front[j] = grid[count - 1][j]
+        }
+
+        for i in stride(from: count - 2, through: 0, by: -1) {
+            for j in stride(from: i, through: 0, by: -1) {
+                let down = grid[i][j] + front[j]
+                let diagonal = grid[i][j] + front[j + 1]
+                current[j] = min(down, diagonal)
+
+            }
+            front = current
+        }
+        return front[0]
+    }
 }
