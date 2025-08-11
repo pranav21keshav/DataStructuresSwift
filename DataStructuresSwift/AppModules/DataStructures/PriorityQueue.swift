@@ -15,6 +15,7 @@ struct PriorityQueueArrayItem<T> {
 struct PriorityQueueArray<T: Comparable> {
     private var items = [PriorityQueueArrayItem<T>]()
 
+    // O(n)
     func peek() -> Int {
         var highestPriority = Int.min
         var elementIndex: Int = -1
@@ -29,12 +30,18 @@ struct PriorityQueueArray<T: Comparable> {
         return elementIndex
     }
 
+    // O(1)
     mutating func enqueue(item: PriorityQueueArrayItem<T>) {
         items.append(item)
     }
 
-    mutating func dequeue() -> PriorityQueueArrayItem<T> {
-        return items.remove(at: peek())
+    // O(n)
+    mutating func dequeue() -> PriorityQueueArrayItem<T>? {
+        let index = peek()
+        if index != -1 {
+            return items.remove(at: peek())
+        }
+        return nil
     }
 }
 
@@ -51,26 +58,37 @@ class PriorityQueueNodeItem<T> {
 }
 
 struct PriorityQueueLinkedList<T> {
-    func peek(node: PriorityQueueNodeItem<T>) -> T {
-        node.data
+    var head: PriorityQueueNodeItem<T>?
+    
+    func peek() -> T? {
+        head?.data
     }
 
-    func push(head: PriorityQueueNodeItem<T>, data: T, priority: Int) -> PriorityQueueNodeItem<T> {
-        var start = head
-        var head = head
+    //O(n)
+    mutating func push(data: T, priority: Int) {
         let newNode = PriorityQueueNodeItem(data: data, priority: priority, next: nil)
-        if start.priority < priority {
+
+        if head == nil {
+            head = newNode
+        } else if head!.priority < priority {
             newNode.next = head
             head = newNode
         } else {
-            while start.next != nil && start.next!.priority >= priority {
-                start = start.next!
+            var start = head
+            while start?.next != nil && start!.next!.priority >= priority {
+                start = start?.next
             }
-            newNode.next = start.next
-            start.next = newNode
+            newNode.next = start?.next
+            start?.next = newNode
         }
-        return head
+
     }
 
-    func pop() {}
+    // O(1)
+    mutating func pop() -> T? {
+        let data = head?.data
+        head = head?.next
+        return data
+
+    }
 }

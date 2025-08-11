@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class TreeNode<T: Comparable & Equatable> {
+class TreeNode<T: Comparable & Hashable> {
     var data: T
     var left: TreeNode?
     var right: TreeNode?
@@ -22,5 +22,19 @@ class TreeNode<T: Comparable & Equatable> {
 extension TreeNode: Equatable {
     static func == (lhs: TreeNode, rhs: TreeNode) -> Bool {
         lhs === rhs
+    }
+}
+
+extension TreeNode: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(data)
+        hasher.combine(left)
+        hasher.combine(right)
+    }
+}
+
+extension TreeNode {
+    var isLeaf: Bool {
+        left == nil && right == nil
     }
 }

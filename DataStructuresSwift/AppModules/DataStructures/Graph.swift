@@ -40,14 +40,21 @@ struct Graph {
             }
         }
 
-        let grid = [
-          [Character("1"), "1", "1", "1", "0"],
+        let grid: [[Character]] = [
+          ["1", "1", "1", "1", "0"],
           ["1", "1", "0", "1", "0"],
           ["1", "1", "0", "0", "0"],
           ["0", "0", "0", "0", "0"]
         ]
         print("Islands for grid - \(grid) is \(numIslands(grid))")
 
+        let grid2: [[Character]] = [
+          ["1", "1", "0", "0", "0"],
+          ["1", "1", "0", "0", "0"],
+          ["0", "0", "1", "0", "0"],
+          ["0", "0", "0", "1", "1"]
+        ]
+        print("Islands for grid - \(grid2) is \(numIslands(grid2))")
     }
 
     // SC - O(2E), For dircted graph - O(E)
@@ -169,7 +176,6 @@ struct Graph {
      An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
 
 
-
      Example 1:
 
      Input: grid = [
@@ -232,8 +238,8 @@ struct Graph {
             let element = queue.removeFirst()
             let currentRow = element.x
             let currentColumn = element.y
-            for i in stride(from: -1, through: 1,  by: 1) {
-                for j in stride(from: -1, through: 1,  by: 1)  {
+            for i in stride(from: -1, through: 1, by: 1) {
+                for j in stride(from: -1, through: 1, by: 1) {
                     if i != 0 && j != 0 {
                         continue
                     }

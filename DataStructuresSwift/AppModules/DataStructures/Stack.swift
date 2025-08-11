@@ -35,3 +35,34 @@ struct Stack<T> {
         return elements.count
     }
 }
+
+struct StackLL<T> {
+    private var top: Node<T>?
+    private var count: Int = 0
+
+    init(top: Node<T>? = nil) {
+        self.top = top
+    }
+
+    mutating func push(_ element: T) {
+        let node = Node(value: element)
+        node.next = top
+        top = node
+        count += 1
+    }
+
+    mutating func pop() -> T? {
+        if top == nil {
+            return nil
+        }
+        count -= 1
+        let node = top?.data
+        top = top?.next
+        return node
+    }
+
+    func peek() -> T? {
+        top?.data
+    }
+
+}

@@ -61,7 +61,14 @@ class DataStructureViewController: UIViewController {
         _ = StringProblems()
         _ = TreeOperations<Int>()
         _ = DynamicProblem()
-        _ = TreeProblems()
+        _ = TreeProblems<Int>()
+        _ = DynamicProblemsString()
+        _ = BuyAndSellStockBestTime()
+        _ = BinarySearch<Int>()
+        _ = StackProblems()
+        var result = [[0: 1], [2: 10], [2: 9], [4: 6]]
+        result.sort { $0.keys.first! == $1.keys.first ? $0.values.first! < $1.values.first! : $0.keys.first! < $1.keys.first! }
+        print(result)
     }
     /*
     // MARK: - Navigation

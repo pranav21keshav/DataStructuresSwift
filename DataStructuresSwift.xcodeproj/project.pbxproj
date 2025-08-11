@@ -12,6 +12,7 @@
 		74540FFF7127A15B19F40167 /* Pods_DataStructuresSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA722AC99DFA2E25F8852B1E /* Pods_DataStructuresSwift.framework */; };
 		BD1262AA2DD275FC00FDC5C5 /* ReviseMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1262A92DD275FC00FDC5C5 /* ReviseMore.swift */; };
 		BD213C8F2DD64CD300E0C095 /* Logical.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD213C8E2DD64CD300E0C095 /* Logical.swift */; };
+		BD2344552E22E42D0059775D /* DynamicProblemsString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2344542E22E42D0059775D /* DynamicProblemsString.swift */; };
 		BD2AD73A2C4D1BCD00B0DE4B /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2AD7392C4D1BCD00B0DE4B /* PriorityQueue.swift */; };
 		BD33CA582C26E20900ABC0C7 /* KMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33CA572C26E20900ABC0C7 /* KMP.swift */; };
 		BD33CA5A2C271C7700ABC0C7 /* Bitwise.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD33CA592C271C7700ABC0C7 /* Bitwise.swift */; };
@@ -20,6 +21,8 @@
 		BD57AC292C42F5BB00CA363A /* QuickSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD57AC282C42F5BB00CA363A /* QuickSelect.swift */; };
 		BD635CFA2C1F40D500745D99 /* Permuation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD635CF92C1F40D500745D99 /* Permuation.swift */; };
 		BD677B642438B7C200029D43 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD677B632438B7C200029D43 /* Queue.swift */; };
+		BD79540F2E36A8930077EBC0 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79540E2E36A8930077EBC0 /* BinarySearch.swift */; };
+		BD82FF242E07CBA7003154DC /* Recursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD82FF232E07CBA7003154DC /* Recursion.swift */; };
 		BD9CF6B224360AF90099C9E3 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CF6B124360AF90099C9E3 /* Sorting.swift */; };
 		BD9F477424338A1F00B9F016 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F477324338A1F00B9F016 /* AppDelegate.swift */; };
 		BD9F477624338A1F00B9F016 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F477524338A1F00B9F016 /* SceneDelegate.swift */; };
@@ -46,14 +49,16 @@
 		BDAF04FD2C25C96100E20AB4 /* KadaneAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */; };
 		BDAF04FF2C25CB8E00E20AB4 /* ArrayProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */; };
 		BDAF05012C25CF6B00E20AB4 /* StringProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */; };
+		BDC08D932E4904B700888772 /* StackProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC08D922E4904B700888772 /* StackProblems.swift */; };
 		BDC151B12DD7A11F00597190 /* BinaryExponentiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC151B02DD7A11F00597190 /* BinaryExponentiation.swift */; };
 		BDD9DD392DECD81D00613526 /* Array2DProblems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD9DD382DECD81D00613526 /* Array2DProblems.swift */; };
 		BDDB2CB12B70B2620088D746 /* BuyTwoChocolates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */; };
 		BDDB2CB32B70B9B90088D746 /* ElementCountInArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */; };
 		BDDE90152DF700D0001E1377 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE90142DF700D0001E1377 /* Heap.swift */; };
 		BDDFEA1B2D7F5CF700CF4FC0 /* DynamicProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDFEA1A2D7F5CF700CF4FC0 /* DynamicProblem.swift */; };
-		BDEEAF9F2434C1130062F01D /* SinglyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEEAF9E2434C1120062F01D /* SinglyLinkedList.swift */; };
+		BDEEAF9F2434C1130062F01D /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEEAF9E2434C1120062F01D /* LinkedList.swift */; };
 		BDEEAFA1243508A40062F01D /* TreeOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEEAFA0243508A40062F01D /* TreeOperations.swift */; };
+		BDF345512E1436F9004C42DF /* SWTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF345502E1436F9004C42DF /* SWTP.swift */; };
 		BDF7E82B2A51D77A007C2B21 /* CircularQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF7E82A2A51D77A007C2B21 /* CircularQueue.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +88,7 @@
 		B6F41D076C22DEB1910B853C /* Pods-DataStructuresSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwiftTests/Pods-DataStructuresSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD1262A92DD275FC00FDC5C5 /* ReviseMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviseMore.swift; sourceTree = "<group>"; };
 		BD213C8E2DD64CD300E0C095 /* Logical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logical.swift; sourceTree = "<group>"; };
+		BD2344542E22E42D0059775D /* DynamicProblemsString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProblemsString.swift; sourceTree = "<group>"; };
 		BD2AD7392C4D1BCD00B0DE4B /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		BD33CA572C26E20900ABC0C7 /* KMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMP.swift; sourceTree = "<group>"; };
 		BD33CA592C271C7700ABC0C7 /* Bitwise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitwise.swift; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 		BD57AC282C42F5BB00CA363A /* QuickSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSelect.swift; sourceTree = "<group>"; };
 		BD635CF92C1F40D500745D99 /* Permuation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permuation.swift; sourceTree = "<group>"; };
 		BD677B632438B7C200029D43 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		BD79540E2E36A8930077EBC0 /* BinarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
+		BD82FF232E07CBA7003154DC /* Recursion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recursion.swift; sourceTree = "<group>"; };
 		BD9CF6B124360AF90099C9E3 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		BD9F477024338A1F00B9F016 /* DataStructuresSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataStructuresSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9F477324338A1F00B9F016 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,14 +131,16 @@
 		BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KadaneAlgorithm.swift; sourceTree = "<group>"; };
 		BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayProblems.swift; sourceTree = "<group>"; };
 		BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProblems.swift; sourceTree = "<group>"; };
+		BDC08D922E4904B700888772 /* StackProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackProblems.swift; sourceTree = "<group>"; };
 		BDC151B02DD7A11F00597190 /* BinaryExponentiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryExponentiation.swift; sourceTree = "<group>"; };
 		BDD9DD382DECD81D00613526 /* Array2DProblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2DProblems.swift; sourceTree = "<group>"; };
 		BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTwoChocolates.swift; sourceTree = "<group>"; };
 		BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCountInArray.swift; sourceTree = "<group>"; };
 		BDDE90142DF700D0001E1377 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		BDDFEA1A2D7F5CF700CF4FC0 /* DynamicProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProblem.swift; sourceTree = "<group>"; };
-		BDEEAF9E2434C1120062F01D /* SinglyLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglyLinkedList.swift; sourceTree = "<group>"; };
+		BDEEAF9E2434C1120062F01D /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		BDEEAFA0243508A40062F01D /* TreeOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOperations.swift; sourceTree = "<group>"; };
+		BDF345502E1436F9004C42DF /* SWTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWTP.swift; sourceTree = "<group>"; };
 		BDF7E82A2A51D77A007C2B21 /* CircularQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularQueue.swift; sourceTree = "<group>"; };
 		DA722AC99DFA2E25F8852B1E /* Pods_DataStructuresSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataStructuresSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC894A65B0D1442888D4758D /* Pods-DataStructuresSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataStructuresSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-DataStructuresSwiftTests/Pods-DataStructuresSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,10 +201,10 @@
 		BD33CA562C26E1F500ABC0C7 /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
-				BD33CA572C26E20900ABC0C7 /* KMP.swift */,
-				BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */,
-				BD57AC282C42F5BB00CA363A /* QuickSelect.swift */,
 				BDC151B02DD7A11F00597190 /* BinaryExponentiation.swift */,
+				BDAF04FC2C25C96100E20AB4 /* KadaneAlgorithm.swift */,
+				BD33CA572C26E20900ABC0C7 /* KMP.swift */,
+				BD57AC282C42F5BB00CA363A /* QuickSelect.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -267,10 +277,10 @@
 		BD9F47A92433B78F00B9F016 /* AppModules */ = {
 			isa = PBXGroup;
 			children = (
-				BD3F1F2C2D77834200D74EF1 /* Graph */,
 				BD33CA562C26E1F500ABC0C7 /* Algorithm */,
-				BDDB2CAF2B70B2110088D746 /* Problems */,
 				BD9F47AA2433B7E300B9F016 /* DataStructures */,
+				BD3F1F2C2D77834200D74EF1 /* Graph */,
+				BDDB2CAF2B70B2110088D746 /* Problems */,
 			);
 			path = AppModules;
 			sourceTree = "<group>";
@@ -278,26 +288,30 @@
 		BD9F47AA2433B7E300B9F016 /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
+				BDA4151B2C39C387008C4DC8 /* AdjacencyList.swift */,
+				BD79540E2E36A8930077EBC0 /* BinarySearch.swift */,
+				BDA1C3292C1A18E8007D8F4E /* BinarySearchTree.swift */,
+				BDF7E82A2A51D77A007C2B21 /* CircularQueue.swift */,
 				BD9F47AB2433B80C00B9F016 /* DataStructures.storyboard */,
 				BD9F47AD2433B81D00B9F016 /* DataStructureViewController.swift */,
-				BD9F47AF2433B8AF00B9F016 /* Node.swift */,
-				BD9F47B12433B93A00B9F016 /* TreeNode.swift */,
-				BD9F47B32433B9F500B9F016 /* Stack.swift */,
-				BDF7E82A2A51D77A007C2B21 /* CircularQueue.swift */,
-				BD677B632438B7C200029D43 /* Queue.swift */,
-				BDEEAF9E2434C1120062F01D /* SinglyLinkedList.swift */,
-				BDEEAFA0243508A40062F01D /* TreeOperations.swift */,
-				BD9CF6B124360AF90099C9E3 /* Sorting.swift */,
-				BDA8AE96243E4AD0003B7D7D /* TreeProblems.swift */,
-				BDA8AE98243E4AED003B7D7D /* GenericProblems.swift */,
-				BDA8AE9A243E4B06003B7D7D /* LinkedListProblems.swift */,
-				BDAA49722C0E35BA00B7FC84 /* Searching.swift */,
-				BDA1C3292C1A18E8007D8F4E /* BinarySearchTree.swift */,
-				BDA415192C399B42008C4DC8 /* Graph.swift */,
-				BDA4151B2C39C387008C4DC8 /* AdjacencyList.swift */,
-				BD2AD7392C4D1BCD00B0DE4B /* PriorityQueue.swift */,
 				BDDFEA1A2D7F5CF700CF4FC0 /* DynamicProblem.swift */,
+				BD2344542E22E42D0059775D /* DynamicProblemsString.swift */,
+				BDA8AE98243E4AED003B7D7D /* GenericProblems.swift */,
+				BDA415192C399B42008C4DC8 /* Graph.swift */,
 				BDDE90142DF700D0001E1377 /* Heap.swift */,
+				BDA8AE9A243E4B06003B7D7D /* LinkedListProblems.swift */,
+				BD9F47AF2433B8AF00B9F016 /* Node.swift */,
+				BD2AD7392C4D1BCD00B0DE4B /* PriorityQueue.swift */,
+				BD677B632438B7C200029D43 /* Queue.swift */,
+				BD82FF232E07CBA7003154DC /* Recursion.swift */,
+				BDAA49722C0E35BA00B7FC84 /* Searching.swift */,
+				BDEEAF9E2434C1120062F01D /* LinkedList.swift */,
+				BD9CF6B124360AF90099C9E3 /* Sorting.swift */,
+				BD9F47B32433B9F500B9F016 /* Stack.swift */,
+				BD9F47B12433B93A00B9F016 /* TreeNode.swift */,
+				BDEEAFA0243508A40062F01D /* TreeOperations.swift */,
+				BDA8AE96243E4AD0003B7D7D /* TreeProblems.swift */,
+				BDF345502E1436F9004C42DF /* SWTP.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -305,16 +319,17 @@
 		BDDB2CAF2B70B2110088D746 /* Problems */ = {
 			isa = PBXGroup;
 			children = (
+				BDD9DD382DECD81D00613526 /* Array2DProblems.swift */,
+				BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */,
+				BD33CA592C271C7700ABC0C7 /* Bitwise.swift */,
+				BD3DEF042B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift */,
 				BDDB2CB02B70B2620088D746 /* BuyTwoChocolates.swift */,
 				BDDB2CB22B70B9B90088D746 /* ElementCountInArray.swift */,
-				BD3DEF042B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift */,
-				BD635CF92C1F40D500745D99 /* Permuation.swift */,
-				BDAF04FE2C25CB8E00E20AB4 /* ArrayProblems.swift */,
-				BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */,
-				BD33CA592C271C7700ABC0C7 /* Bitwise.swift */,
-				BD1262A92DD275FC00FDC5C5 /* ReviseMore.swift */,
 				BD213C8E2DD64CD300E0C095 /* Logical.swift */,
-				BDD9DD382DECD81D00613526 /* Array2DProblems.swift */,
+				BD635CF92C1F40D500745D99 /* Permuation.swift */,
+				BD1262A92DD275FC00FDC5C5 /* ReviseMore.swift */,
+				BDAF05002C25CF6B00E20AB4 /* StringProblems.swift */,
+				BDC08D922E4904B700888772 /* StackProblems.swift */,
 			);
 			path = Problems;
 			sourceTree = "<group>";
@@ -546,6 +561,7 @@
 				BD2AD73A2C4D1BCD00B0DE4B /* PriorityQueue.swift in Sources */,
 				BDA8AE97243E4AD0003B7D7D /* TreeProblems.swift in Sources */,
 				BD9F47B22433B93A00B9F016 /* TreeNode.swift in Sources */,
+				BDF345512E1436F9004C42DF /* SWTP.swift in Sources */,
 				BD9F477824338A1F00B9F016 /* ViewController.swift in Sources */,
 				BDA4151C2C39C387008C4DC8 /* AdjacencyList.swift in Sources */,
 				BD9F477424338A1F00B9F016 /* AppDelegate.swift in Sources */,
@@ -567,11 +583,15 @@
 				BDA4151A2C399B43008C4DC8 /* Graph.swift in Sources */,
 				BD9F47B02433B8AF00B9F016 /* Node.swift in Sources */,
 				BDDE90152DF700D0001E1377 /* Heap.swift in Sources */,
+				BD82FF242E07CBA7003154DC /* Recursion.swift in Sources */,
 				BD3DEF052B95A0E600C77BC4 /* BuyAndSellStockBestTime.swift in Sources */,
-				BDEEAF9F2434C1130062F01D /* SinglyLinkedList.swift in Sources */,
+				BDEEAF9F2434C1130062F01D /* LinkedList.swift in Sources */,
+				BD2344552E22E42D0059775D /* DynamicProblemsString.swift in Sources */,
 				BDD9DD392DECD81D00613526 /* Array2DProblems.swift in Sources */,
 				BD33CA5A2C271C7700ABC0C7 /* Bitwise.swift in Sources */,
 				BD9F47AE2433B81D00B9F016 /* DataStructureViewController.swift in Sources */,
+				BDC08D932E4904B700888772 /* StackProblems.swift in Sources */,
+				BD79540F2E36A8930077EBC0 /* BinarySearch.swift in Sources */,
 				BDAF04FD2C25C96100E20AB4 /* KadaneAlgorithm.swift in Sources */,
 				BD3F1F302D77836800D74EF1 /* Graph.swift.swift in Sources */,
 				BDA1C32A2C1A18E8007D8F4E /* BinarySearchTree.swift in Sources */,

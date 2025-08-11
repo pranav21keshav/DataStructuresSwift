@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct TreeOperations<T: Comparable & Equatable> {
+struct TreeOperations<T: Comparable & Hashable> {
     init() {
         var binaryTreeRoot: TreeNode<T> = createIntBinaryTree()
         let traversal = inorderTraversal(binaryTreeRoot)
@@ -98,18 +98,32 @@ struct TreeOperations<T: Comparable & Equatable> {
         inOrderTraversalTraversalRecursionResult(root: root.right, result: result)
     }
 
+    // TC - O(n), number of nodes
+    // SC - O(h), height of tree,
+    // In the worst case, h can be the same as N (when the tree is a skewed tree)
+    // In the best case, h can be the same as log N (when the tree is a complete tree)
     func inOrderTraversalUsingRecusrion(root: TreeNode<T>?) {
         guard let root = root else { return }
         inOrderTraversalUsingRecusrion(root: root.left)
         print(root.data)
         inOrderTraversalUsingRecusrion(root: root.right)
     }
+
+    // TC - O(n), number of nodes
+    // SC - O(h), height of tree,
+    // In the worst case, h can be the same as N (when the tree is a skewed tree)
+    // In the best case, h can be the same as log N (when the tree is a complete tree)
     func preOrderTraversalUsingRecursion(root: TreeNode<T>?) {
         guard let root = root else { return }
         print(root.data)
         preOrderTraversalUsingRecursion(root: root.left)
         preOrderTraversalUsingRecursion(root: root.right)
     }
+
+    // TC - O(n), number of nodes
+    // SC - O(h), height of tree,
+    // In the worst case, h can be the same as N (when the tree is a skewed tree)
+    // In the best case, h can be the same as log N (when the tree is a complete tree)
     func postOrderTraversalUsingRecursion(root: TreeNode<T>?) {
         guard let root = root else { return }
         postOrderTraversalUsingRecursion(root: root.left)
@@ -117,11 +131,19 @@ struct TreeOperations<T: Comparable & Equatable> {
         print(root.data)
     }
 
-    // Level Order Traversal Recursive
-    func getHeightOfBinaryTree(rootNode: TreeNode<T>?) -> Int {
+    // TC - O(n)
+    // SC - O(h) Worst case, h = n, best case h = log N
+    func getHeightOfBinaryTreeIterative(rootNode: TreeNode<T>?) -> Int {
         guard let root = rootNode else { return 0 }
-        let lheight = getHeightOfBinaryTree(rootNode: root.left)
-        let rheight = getHeightOfBinaryTree(rootNode: root.right)
+        let lheight = getHeightOfBinaryTreeRecursive(rootNode: root.left)
+        let rheight = getHeightOfBinaryTreeRecursive(rootNode: root.right)
+        return (lheight > rheight) ? lheight + 1 : rheight + 1
+    }
+
+    func getHeightOfBinaryTreeRecursive(rootNode: TreeNode<T>?) -> Int {
+        guard let root = rootNode else { return 0 }
+        let lheight = getHeightOfBinaryTreeRecursive(rootNode: root.left)
+        let rheight = getHeightOfBinaryTreeRecursive(rootNode: root.right)
         return (lheight > rheight) ? lheight + 1 : rheight + 1
     }
 
@@ -135,12 +157,15 @@ struct TreeOperations<T: Comparable & Equatable> {
         }
     }
 
+    // Level Order Traversal Recursive
     func levelOrderTraversalUsingRecursion(root: TreeNode<T>) {
-        for i in 1...getHeightOfBinaryTree(rootNode: root) {
+        for i in 1...getHeightOfBinaryTreeRecursive(rootNode: root) {
             printGivenLevelOfBinaryTree(level: i, root: root)
         }
     }
 
+    // TC - O(n), number of nodes
+    // SC - O(n)
     func inOrderTraversalUsingStack(root: TreeNode<T>) {
         var current: TreeNode? = root
         var stack = Stack<TreeNode<T>>()
@@ -291,6 +316,9 @@ struct TreeOperations<T: Comparable & Equatable> {
         }
 
     }
+
+    // TC - O(n), number of nodes
+    // SC - O(n),
 
     func levelOrderTraversalUsingQueue(root: TreeNode<T>?) {
         guard let root = root else { return }
