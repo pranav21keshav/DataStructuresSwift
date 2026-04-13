@@ -7,6 +7,8 @@
 //
 
 import Foundation
+// Left < Node < Right
+// Inorder traversal gives sorted order
 class BinarySearchTree<T: Comparable & Hashable> {
     var root: TreeNode<T>?
 
@@ -165,9 +167,7 @@ class BinarySearchTree<T: Comparable & Hashable> {
 
     /*
      450. Delete Node in a BST
-     Medium
-     Topics
-     conpanies icon
+
      Companies
      Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.
 
@@ -248,6 +248,36 @@ class BinarySearchTree<T: Comparable & Hashable> {
         var root = root
         while root?.right != nil {
             root = root?.right
+        }
+        return root
+    }
+
+    func deleteNodeRecursive(root: TreeNode<Int>?, key: Int) -> TreeNode<Int>? {
+        if root == nil {
+            return root
+        }
+        if root!.data > key {
+            root?.left = deleteNodeRecursive(root: root?.left, key: key)
+        } else if root!.data < key {
+            root?.right = deleteNodeRecursive(root: root?.right, key: key)
+        } else {
+            if root?.left == nil {
+                return root?.right
+            } else if root?.right == nil {
+                return root?.left
+            } else {
+                let inorderSuccessor = inorderSuccessor(root: root)!
+                root?.data = inorderSuccessor.data
+                root?.right = deleteNodeRecursive(root: root?.right, key: inorderSuccessor.data)
+            }
+        }
+        return root
+    }
+
+    func inorderSuccessor(root: TreeNode<Int>?) -> TreeNode<Int>? {
+        var root = root?.right
+        while root != nil && root?.left != nil {
+            root = root?.left
         }
         return root
     }
