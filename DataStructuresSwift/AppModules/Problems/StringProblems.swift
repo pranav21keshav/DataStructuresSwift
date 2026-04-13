@@ -78,6 +78,158 @@ struct StringProblems {
     }
 
     /*
+     415. Add Strings
+
+     Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
+
+     You must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.
+
+
+
+     Example 1:
+
+     Input: num1 = "11", num2 = "123"
+     Output: "134"
+     Example 2:
+
+     Input: num1 = "456", num2 = "77"
+     Output: "533"
+     Example 3:
+
+     Input: num1 = "0", num2 = "0"
+     Output: "0"
+
+
+     Constraints:
+
+     1 <= num1.length, num2.length <= 104
+     num1 and num2 consist of only digits.
+     num1 and num2 don't have any leading zeros except for the zero itself.
+     */
+    func addStrings(_ num1: String, _ num2: String) -> String {
+        var result = ""
+        var count1 = num1.count - 1
+        var count2 = num2.count - 1
+        let zeroAscii = Int(Character("0").asciiValue!)
+        var carry: Int = 0
+        while count1 >= 0 || count2 >= 0 {
+            let char1 = Int((count1 >= 0 ? num1[String.Index(utf16Offset: count1, in: num1)] : Character("0")).asciiValue!) - zeroAscii
+            let char2 = Int((count2 >= 0 ? num2[String.Index(utf16Offset: count2, in: num2)] : Character("0")).asciiValue!) - zeroAscii
+            let sum = (char1 + char2 + carry) % 10
+            carry = (char1 + char2 + carry) / 10
+            result.append("\(sum)")
+            count1 -= 1
+            count2 -= 1
+        }
+        if carry != 0 {
+            result.append("\(carry)")
+        }
+        
+        return String(result.reversed())
+        
+    }
+    /*
+     125. Valid Palindrome
+
+     A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+     Given a string s, return true if it is a palindrome, or false otherwise.
+
+
+
+     Example 1:
+
+     Input: s = "A man, a plan, a canal: Panama"
+     Output: true
+     Explanation: "amanaplanacanalpanama" is a palindrome.
+     Example 2:
+
+     Input: s = "race a car"
+     Output: false
+     Explanation: "raceacar" is not a palindrome.
+     Example 3:
+
+     Input: s = " "
+     Output: true
+     Explanation: s is an empty string "" after removing non-alphanumeric characters.
+     Since an empty string reads the same forward and backward, it is a palindrome.
+
+
+     Constraints:
+
+     1 <= s.length <= 2 * 105
+     s consists only of printable ASCII characters.
+     */
+    func isPalindrome(_ s: String) -> Bool {
+        let char = Array(s)
+        var i = 0
+        var j = char.count - 1
+        while i < j {
+            if !(char[i].isNumber || char[i].isLetter) {
+                i += 1
+            } else if !(char[j].isNumber || char[j].isLetter) {
+                j -= 1
+            } else if char[i].lowercased() != char[j].lowercased() {
+                return false
+            } else {
+                i += 1
+                j -= 1
+            }
+        }
+        return true
+
+    }
+
+    /*
+     680. Valid Palindrome II
+
+     Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
+
+
+     Example 1:
+
+     Input: s = "aba"
+     Output: true
+     Example 2:
+
+     Input: s = "abca"
+     Output: true
+     Explanation: You could delete the character 'c'.
+     Example 3:
+
+     Input: s = "abc"
+     Output: false
+
+
+     Constraints:
+
+     1 <= s.length <= 105
+     s consists of lowercase English letters.
+
+
+     */
+
+    // wrong solution
+    func validPalindrome(_ s: String) -> Bool {
+        let array = Array(s)
+        var i = 0
+        var j = array.count - 1
+        var count = 0
+        while i < j {
+            if array[i] != array[j] {
+                count += 1
+                if count > 1 {
+                    return false
+                }
+            }
+            i += 1
+            j -= 1
+        }
+        return count == 1 && array.count == 3 ? false : true
+
+    }
+    /*
      Given a string s having lowercase characters, find the length of the longest substring without repeating characters.
      Input: s = “geeksforgeeks”
      Output: 7

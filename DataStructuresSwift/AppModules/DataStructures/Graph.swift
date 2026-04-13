@@ -12,6 +12,18 @@ struct Pair {
     var weight: Int
 }
 struct Graph {
+    // Total degree of graph = 2 * E
+    // Degree of a node in undriected graph is total number of edges
+    // Diected Graph - Indegree, Outdegree
+    // Indegree - Number of incoming edges
+    // Outdegree - Number of outgoing edges
+    // Edge Weight -
+    // Weighted graph
+    // Bipartitie graph - adjacent egdes are in different color
+    // Linear graph is always bipartite
+    // Graph with even cycle length can be bipartite
+    // Graph with odd cycle length can not be bipartite
+
     init() {
         var graph = [[Int]]()
         graph.append([0, 1, 0, 0])
@@ -46,7 +58,7 @@ struct Graph {
           ["1", "1", "0", "0", "0"],
           ["0", "0", "0", "0", "0"]
         ]
-        print("Islands for grid - \(grid) is \(numIslands(grid))")
+//        print("Islands for grid - \(grid) is \(numIslands(grid))")
 
         let grid2: [[Character]] = [
           ["1", "1", "0", "0", "0"],
@@ -54,7 +66,7 @@ struct Graph {
           ["0", "0", "1", "0", "0"],
           ["0", "0", "0", "1", "1"]
         ]
-        print("Islands for grid - \(grid2) is \(numIslands(grid2))")
+//        print("Islands for grid - \(grid2) is \(numIslands(grid2))")
     }
 
     // SC - O(2E), For dircted graph - O(E)
@@ -127,131 +139,6 @@ struct Graph {
         for i in adjacencyList[node] {
             if !visited.contains(i) {
                 dfsRecursiondjacencyList(adjacencyList: adjacencyList, node: i, visited: &visited, result: &result)
-            }
-        }
-    }
-
-    /*
-     Given an undirected graph with V vertices, find number of provinces. Two vertices u and v belong to single province if
-     path exists from u to v or v to u
-     */
-
-    // SC - O(n) + O(n) (recursion stack space), excluding the adjacency list
-    // TC - O(n) + O(V + 2e)
-    func provinces(adjacencyMatrix: [[Int]], node: Int) -> Int {
-        let count = adjacencyMatrix.count
-        var adjacencyList = Array(repeating: [Int](), count: count)
-        for i in 0..<count {
-            for j in 0..<count {
-                if i != j && adjacencyMatrix[i][j] == 1 {
-                    adjacencyList[i].append(j)
-                    // adjacencyList[j].append(i)
-                }
-            }
-        }
-        var result = 0
-        var visited = Set<Int>()
-        for i in 0..<count {
-            if !visited.contains(i) {
-                result += 1
-                dfsTraversal(adjacencyList: adjacencyList, node: i, visited: &visited)
-            }
-        }
-
-        return result
-    }
-
-    func dfsTraversal(adjacencyList: [[Int]], node: Int, visited: inout Set<Int>) {
-        visited.insert(node)
-        for i in adjacencyList[node] {
-            if !visited.contains(i) {
-                dfsTraversal(adjacencyList: adjacencyList, node: i, visited: &visited)
-            }
-        }
-    }
-
-    /*
-     Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
-
-     An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
-
-
-     Example 1:
-
-     Input: grid = [
-       ["1","1","1","1","0"],
-       ["1","1","0","1","0"],
-       ["1","1","0","0","0"],
-       ["0","0","0","0","0"]
-     ]
-     Output: 1
-     Example 2:
-
-     Input: grid = [
-       ["1","1","0","0","0"],
-       ["1","1","0","0","0"],
-       ["0","0","1","0","0"],
-       ["0","0","0","1","1"]
-     ]
-     Output: 3
-
-
-     Constraints:
-
-     m == grid.length
-     n == grid[i].length
-     1 <= m, n <= 300
-     grid[i][j] is '0' or '1'.
-     */
-
-    struct HashablePair<T: Hashable>: Hashable {
-        let x: T
-        let y: T
-    }
-    
-    func numIslands(_ grid: [[Character]]) -> Int {
-        if grid.isEmpty {
-            return 0
-        }
-        let row = grid.count
-        let column = grid[0].count
-        
-        var visited = Set<HashablePair<Int>>()
-        var count = 0
-        for i in 0..<row {
-            for j in 0..<column {
-                if !visited.contains(HashablePair(x: i, y: j)) && grid[i][j] == "1" {
-                    count += 1
-                    bfs(visited: &visited, grid: grid, row: i, column: j)
-                    
-                }
-            }
-        }
-        return count
-    }
-    
-    private func bfs(visited: inout Set<HashablePair<Int>>, grid: [[Character]], row: Int, column: Int) {
-        visited.insert(HashablePair(x: row, y: column))
-        var queue = [HashablePair<Int>]()
-        queue.append(HashablePair(x: row, y: column))
-        while !queue.isEmpty {
-            let element = queue.removeFirst()
-            let currentRow = element.x
-            let currentColumn = element.y
-            for i in stride(from: -1, through: 1, by: 1) {
-                for j in stride(from: -1, through: 1, by: 1) {
-                    if i != 0 && j != 0 {
-                        continue
-                    }
-                    let newRow = currentRow + i
-                    let newColumn = currentColumn + j
-                    if newRow >= 0 && newRow < grid.count &&
-                        newColumn >= 0 && newColumn < grid[0].count &&
-                        !visited.contains(HashablePair(x: newRow, y: newColumn)) && grid[newRow][newColumn] == "1" {
-                        visited.insert(HashablePair(x: newRow, y: newColumn))
-                        queue.append(HashablePair(x: newRow, y: newColumn))
-                    }
-                }
             }
         }
     }

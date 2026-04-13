@@ -8,6 +8,10 @@
 
 import Foundation
 struct Sorting<T: Comparable> {
+    init() {
+        var array: [Int] = [9, 8, 7, 6, 5]
+        mergeSortDynamic(array, <)
+    }
 
     // Time Complexity: O(N^2) - Worst case and average case
     // Stable - No
@@ -134,7 +138,7 @@ struct Sorting<T: Comparable> {
     }
      */
 
-    func merge(left: [T], right: [T], _ orderBy: (T, T) -> Bool) -> [T] {
+    func merge<T: Comparable>(left: [T], right: [T], _ orderBy: (T, T) -> Bool) -> [T] {
         var leftIndex = 0, rightIndex = 0
         var orderedArray = [T]()
         while leftIndex < left.count && rightIndex < right.count {
@@ -161,11 +165,11 @@ struct Sorting<T: Comparable> {
         }
         return orderedArray
     }
-    func mergeSort(_ array: [T], _ orderBy: (T, T) -> Bool) -> [T] {
+    func mergeSortDynamic<T: Comparable>(_ array: [T], _ orderBy: (T, T) -> Bool) -> [T] {
         guard array.count > 1 else { return array }
         let mid = array.count / 2
-        let left = mergeSort(Array(array[0..<mid]), orderBy)
-        let right = mergeSort(Array(array[mid..<array.count]), orderBy)
+        let left = mergeSortDynamic(Array(array[0..<mid]), orderBy)
+        let right = mergeSortDynamic(Array(array[mid..<array.count]), orderBy)
         return merge(left: left, right: right, orderBy)
     }
     func lomutoPartition(_ array: inout [T], low: Int, high: Int) -> Int {

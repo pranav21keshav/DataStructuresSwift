@@ -8,12 +8,15 @@
 
 import Foundation
 
+// swiftlint:disable file_length
 class TreeProblems<T: Comparable & Hashable> {
 
     init(solution: [[Int]] = [[Int]]()) {
         self.solution = solution
         var root: TreeNode<Int>? = createIntBinaryTree()
         print("Find Leaves - \(findLeaves(&root)), root - \(root)" )
+        var root2: TreeNode<Int>? = createIntBinaryTree2()
+        print(countNodes(root2))
     }
 
     public  func createIntBinaryTree() -> TreeNode<Int> {
@@ -29,6 +32,25 @@ class TreeProblems<T: Comparable & Hashable> {
         treeNode1.right = TreeNode(value: 3)
         treeNode1.left?.left = TreeNode(value: 4)
         treeNode1.left?.right = TreeNode(value: 5)
+
+        return treeNode1
+    }
+
+    public  func createIntBinaryTree2() -> TreeNode<Int> {
+        /*
+                  1
+                /   \
+               2     3
+              / \   / \
+             4   5  6  7
+         */
+        let treeNode1 = TreeNode(value: 1)
+        treeNode1.left = TreeNode(value: 2)
+        treeNode1.right = TreeNode(value: 3)
+        treeNode1.left?.left = TreeNode(value: 4)
+        treeNode1.left?.right = TreeNode(value: 5)
+        treeNode1.right?.left = TreeNode(value: 6)
+        treeNode1.right?.right = TreeNode(value: 7)
 
         return treeNode1
     }
@@ -106,7 +128,8 @@ class TreeProblems<T: Comparable & Hashable> {
         }
     }
     /*
-     Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+     Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path
+     equals targetSum.
 
      A leaf is a node with no children.
 
@@ -431,6 +454,7 @@ class TreeProblems<T: Comparable & Hashable> {
         let levels = bfs(root: root)
         for i in stride(from: minColumn, through: maxColumn, by: 1) {
             var levelData = levels[i]!
+            // If two nodes are in same row and column then sorts it on the basis of value
             levelData.sort { $0.first!.key == $1.first!.key ? $0.first!.value < $1.first!.value : $0.first!.key < $1.first!.key }
             var levelInfo = [T]()
             for data in levelData {
@@ -443,7 +467,9 @@ class TreeProblems<T: Comparable & Hashable> {
     }
 
     func bfs(root: TreeNode<T>) -> [Int: [[Int: T]]] {
+        // Vertical - Level - Node
         var verticalInfo = [Int: [[Int: T]]]()
+        // Node - Vertical - Level
         var queue = [[TreeNode<T>: [Int: Int]]]()
         var row = 0
         var column = 0
@@ -551,10 +577,10 @@ class TreeProblems<T: Comparable & Hashable> {
         if level == result.count {
             result.append(root.data)
         }
-        if let right = root.right {
+        if root.right != nil {
             rightViewDFS(root: root, level: level + 1, result: &result)
         }
-        if let left = root.left {
+        if root.left != nil {
             rightViewDFS(root: root, level: level + 1, result: &result)
         }
 
@@ -613,12 +639,112 @@ class TreeProblems<T: Comparable & Hashable> {
         if root.data == destination {
             return true
         }
-        let result = getPath(root: root, path: &path, destination: destination)
+        let result = getPath(root: root.left, path: &path, destination: destination) || getPath(root: root.right, path: &path, destination: destination)
         if !result {
             path.removeLast()
         }
         return result
     }
+
+    /*
+     257. Binary Tree Paths
+     Solved
+     Easy
+     Topics
+     conpanies icon
+     Companies
+     Given the root of a binary tree, return all root-to-leaf paths in any order.
+
+     A leaf is a node with no children.
+
+
+
+     Example 1:
+
+
+     Input: root = [1,2,3,null,5]
+     Output: ["1->2->5","1->3"]
+     Example 2:
+
+     Input: root = [1]
+     Output: ["1"]
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [1, 100].
+     -100 <= Node.val <= 100
+     */
+
+    func binaryTreePaths(_ root: TreeNode<String>?) -> [String] {
+        guard let root = root else {
+            return []
+        }
+        var result = [String]()
+        var currentPath = ""
+        binaryTreePathsRecursion(root: root, currentPath: currentPath, result: &result)
+        return result
+
+    }
+
+    private func binaryTreePathsRecursion(root: TreeNode<String>?, currentPath: String, result: inout [String]) {
+        guard let root = root else {
+            return
+        }
+        var currentPath = currentPath
+        if currentPath.isEmpty {
+            currentPath.append("\(root.data)")
+        } else {
+            currentPath.append("->\(root.data)")
+        }
+        if root.left == nil && root.right == nil {
+            result.append(currentPath)
+        } else {
+            binaryTreePathsRecursion(root: root.left, currentPath: currentPath, result: &result)
+            binaryTreePathsRecursion(root: root.right, currentPath: currentPath, result: &result)
+        }
+
+    }
+
+    /*
+         Lowest Common Ancestor of Binary Tree
+         236. Lowest Common Ancestor of a Binary Tree
+         Medium
+         Topics
+         conpanies icon
+         Companies
+         Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+
+         According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+
+
+         Example 1:
+
+
+         Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+         Output: 3
+         Explanation: The LCA of nodes 5 and 1 is 3.
+         Example 2:
+
+
+         Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+         Output: 5
+         Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+         Example 3:
+
+         Input: root = [1,2], p = 1, q = 2
+         Output: 1
+
+
+         Constraints:
+
+         The number of nodes in the tree is in the range [2, 105].
+         -109 <= Node.val <= 109
+         All Node.val are unique.
+         p != q
+         p and q will exist in the tree.
+         */
 
     func lowestCommonAncestorBinaryTree(root: TreeNode<T>?, p: TreeNode<T>?, q: TreeNode<T>?) -> TreeNode<T>? {
         if root == nil || root === p || root === q {
@@ -754,6 +880,516 @@ class TreeProblems<T: Comparable & Hashable> {
 
     /*
      Children sum property in a binary tree
-     
+     Problem Statement: Given a Binary Tree, convert the value of its nodes to follow the Children Sum Property. The Children Sum Property in a binary tree states that for every node, the sum of its children's values (if they exist) should be equal to the node's value. If a child is missing, it is considered as having a value of 0.
+
+     Note:
+
+     The node values can be increased by any positive integer any number of times, but decrementing any node value is not allowed.
+     A value for a NULL node can be assumed as 0.
+     We cannot change the structure of the given binary tree.
+
      */
+
+    func changeTree(root: inout TreeNode<Int>?) {
+        if root == nil {
+            return
+        }
+        var child = 0
+        if let left = root?.left {
+            child += left.data
+        }
+        if let right = root?.right {
+            child += right.data
+        }
+        if child > root!.data {
+            root?.data = child
+        } else {
+            if root?.left != nil {
+                root?.left?.data = child
+            }
+            if root?.right != nil {
+                root?.right?.data = child
+            }
+        }
+        var left = root?.left
+        var right = root?.right
+        changeTree(root: &left)
+        changeTree(root: &right)
+
+        var total = 0
+        if let data = root?.left?.data {
+            total += data
+        }
+        if let data = root?.right?.data {
+            total += data
+        }
+        if root?.left != nil || root?.right != nil {
+            root?.data = total
+        }
+    }
+
+    /*
+     863. All Nodes Distance K in Binary Tree
+    
+     Given the root of a binary tree, the value of a target node target, and an integer k, return an array of the values of all nodes that have a distance k from the target node.
+
+     You can return the answer in any order.
+
+
+
+     Example 1:
+
+
+     Input: root = [3,5,1,6,2,0,8,null,null,7,4], target = 5, k = 2
+     Output: [7,4,1]
+     Explanation: The nodes that are a distance 2 from the target node (with value 5) have values 7, 4, and 1.
+     Example 2:
+
+     Input: root = [1], target = 1, k = 3
+     Output: []
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [1, 500].
+     0 <= Node.val <= 500
+     All the values Node.val are unique.
+     target is the value of one of the nodes in the tree.
+     0 <= k <= 1000
+     */
+
+    private func parentTrack(root: TreeNode<Int>) -> [TreeNode<Int>: TreeNode<Int>] {
+        var result = [TreeNode<Int>: TreeNode<Int>]()
+        var queue = [TreeNode<Int>]()
+        queue.append(root)
+        while !queue.isEmpty {
+            var current = queue.removeFirst()
+            if let left = current.left {
+                queue.append(left)
+                result[left] = current
+            }
+            if let right = current.right {
+                queue.append(right)
+                result[right] = current
+            }
+        }
+        return result
+    }
+
+    func distanceK(_ root: TreeNode<Int>?, _ target: TreeNode<Int>?, _ k: Int) -> [Int] {
+        guard let root = root, let target = target  else { return [] }
+
+        var parentMatch = parentTrack(root: root)
+        var visible = [TreeNode<Int>: Bool]()
+        var queue = [TreeNode<Int>]()
+        var result = [Int]()
+        queue.append(target)
+        visible[target] = true
+        var level = 0
+        while !queue.isEmpty {
+            if level == k {
+                break
+            }
+            level += 1
+            let size = queue.count
+            for i in stride(from: 0, through: size - 1, by: 1) {
+                let current = queue.removeFirst()
+                if let left = current.left, visible[left] == nil {
+                    queue.append(left)
+                    visible[left] = true
+
+                }
+                if let right = current.right, visible[right] == nil {
+                    queue.append(right)
+                    visible[right] = true
+
+                }
+                if let parent = parentMatch[current], visible[parent] == nil {
+                    queue.append(parent)
+                    visible[parent] = true
+
+                }
+            }
+        }
+        for node in queue {
+            result.append(node.data)
+        }
+        return result
+    }
+
+    /*
+     2385. Amount of Time for Binary Tree to Be Infected
+     Medium
+     Topics
+     conpanies icon
+     Companies
+     Hint
+     You are given the root of a binary tree with unique values, and an integer start. At minute 0, an infection starts from the node with value start.
+
+     Each minute, a node becomes infected if:
+
+     The node is currently uninfected.
+     The node is adjacent to an infected node.
+     Return the number of minutes needed for the entire tree to be infected.
+
+
+
+     Example 1:
+
+
+     Input: root = [1,5,3,null,4,10,6,9,2], start = 3
+     Output: 4
+     Explanation: The following nodes are infected during:
+     - Minute 0: Node 3
+     - Minute 1: Nodes 1, 10 and 6
+     - Minute 2: Node 5
+     - Minute 3: Node 4
+     - Minute 4: Nodes 9 and 2
+     It takes 4 minutes for the whole tree to be infected so we return 4.
+     Example 2:
+
+
+     Input: root = [1], start = 1
+     Output: 0
+     Explanation: At minute 0, the only node in the tree is infected so we return 0.
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [1, 105].
+     1 <= Node.val <= 105
+     Each node has a unique value.
+     A node with a value of start exists in the tree.
+     */
+
+    func amountOfTime(_ root: TreeNode<Int>?, _ start: Int) -> Int {
+        guard let root = root else { return Int.max }
+        let (parentMarker, startNode) = parentMarker(root: root, start: start)
+        var result = 0
+        var queue = Queue<TreeNode<Int>>()
+        var visited = [TreeNode<Int>: Bool]()
+        visited[startNode] = true
+
+        queue.enqueue(startNode)
+        while !queue.isEmpty() {
+            var flag = false
+            let count = queue.count
+            for _ in stride(from: 0, through: queue.count() - 1, by: 1) {
+                let current = queue.dequeue()!
+                if let left = current.left, visited[left] == nil {
+                    queue.enqueue(left)
+                    visited[left] = true
+                    flag = true
+                }
+                if let right = current.right, visited[right] == nil {
+                    queue.enqueue(right)
+                    visited[right] = true
+                    flag = true
+                }
+                if let parent = parentMarker[current], visited[parent] == nil {
+                    queue.enqueue(parent)
+                    visited[parent] = true
+                    flag = true
+                }
+            }
+            if flag {
+                result += 1
+            }
+        }
+        return result
+    }
+
+    private func parentMarker(root: TreeNode<Int>, start: Int) -> ([TreeNode<Int>: TreeNode<Int>], TreeNode<Int>) {
+        var treeNode = TreeNode<Int>(value: 0)
+        var queue = Queue<TreeNode<Int>>()
+        var parentMarker = [TreeNode<Int>: TreeNode<Int>]()
+        queue.enqueue(root)
+        while !queue.isEmpty() {
+            let current = queue.dequeue()!
+            if let left = current.left {
+                parentMarker[left] = current
+                queue.enqueue(left)
+            }
+            if let right = current.right {
+                parentMarker[right] = current
+                queue.enqueue(right)
+            }
+            if current.data == start {
+                treeNode = current
+            }
+        }
+
+        return (parentMarker, treeNode)
+    }
+    /*
+     222. Count Complete Tree Nodes
+     Given the root of a complete binary tree, return the number of the nodes in the tree.
+
+     According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+
+     Design an algorithm that runs in less than O(n) time complexity.
+
+
+
+     Example 1:
+
+
+     Input: root = [1,2,3,4,5,6]
+     Output: 6
+     Example 2:
+
+     Input: root = []
+     Output: 0
+     Example 3:
+
+     Input: root = [1]
+     Output: 1
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [0, 5 * 104].
+     0 <= Node.val <= 5 * 104
+     The tree is guaranteed to be complete.
+     */
+    func countNodes(_ root: TreeNode<Int>?) -> Int {
+        var result = 0
+        inorder(root: root, count: &result)
+        return result
+    }
+
+    func inorder(root: TreeNode<Int>?, count: inout Int) {
+        guard let root = root else { return }
+        inorder(root: root.left, count: &count)
+        count += 1
+        inorder(root: root.right, count: &count)
+    }
+
+    func countNodesOpti(_ root: TreeNode<T>?) -> Int {
+        if root == nil {
+            return 0
+        }
+        let leftHeight = leftHeight(root: root)
+        let rightHeight = rightHeight(root: root)
+        if leftHeight == rightHeight {
+            return 1 << leftHeight - 1
+        }
+        return 1 + countNodesOpti(root?.left) + countNodesOpti(root?.right)
+
+    }
+
+    func leftHeight(root: TreeNode<T>?) -> Int {
+        var root = root
+        var height = 0
+        while root != nil {
+            height += 1
+            root = root?.left
+        }
+        return height
+    }
+
+    func rightHeight(root: TreeNode<T>?) -> Int {
+        var root = root
+        var height = 0
+        while root != nil {
+            height += 1
+            root = root?.right
+        }
+        return height
+    }
+
+    /*
+     889. Construct Binary Tree from Preorder and Postorder Traversal
+
+     Given two integer arrays, preorder and postorder where preorder is the preorder traversal of a binary tree of distinct values and postorder is the postorder traversal of the same tree, reconstruct and return the binary tree.
+
+     If there exist multiple answers, you can return any of them.
+
+
+
+     Example 1:
+
+
+     Input: preorder = [1,2,4,5,3,6,7], postorder = [4,5,2,6,7,3,1]
+     Output: [1,2,3,4,5,6,7]
+     Example 2:
+
+     Input: preorder = [1], postorder = [1]
+     Output: [1]
+
+
+     Constraints:
+
+     1 <= preorder.length <= 30
+     1 <= preorder[i] <= preorder.length
+     All the values of preorder are unique.
+     postorder.length == preorder.length
+     1 <= postorder[i] <= postorder.length
+     All the values of postorder are unique.
+     It is guaranteed that preorder and postorder are the preorder traversal and postorder traversal of the same binary tree.
+     */
+
+    func buildTreePreIn(_ preorder: [Int], _ inorder: [Int]) -> TreeNode<Int>? {
+        let count = inorder.count
+        var dict = [Int: Int]()
+        for i in stride(from: 0, through: count - 1, by: 1) {
+            dict[inorder[i]] = i
+        }
+
+        return createTreePreIn(preOrder: preorder, preStart: 0, preEnd: count - 1, inOrder: inorder, inStart: 0, inEnd: count - 1, dict: dict)
+    }
+
+    /*
+     106. Construct Binary Tree from Inorder and Postorder Traversal
+
+     Given two integer arrays inorder and postorder where inorder is the inorder traversal of a binary tree and postorder is the postorder traversal of the same tree, construct and return the binary tree.
+
+
+
+     Example 1:
+
+
+     Input: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+     Output: [3,9,20,null,null,15,7]
+     Example 2:
+
+     Input: inorder = [-1], postorder = [-1]
+     Output: [-1]
+
+
+     Constraints:
+
+     1 <= inorder.length <= 3000
+     postorder.length == inorder.length
+     -3000 <= inorder[i], postorder[i] <= 3000
+     inorder and postorder consist of unique values.
+     Each value of postorder also appears in inorder.
+     inorder is guaranteed to be the inorder traversal of the tree.
+     postorder is guaranteed to be the postorder traversal of the tree.
+     */
+    
+    func createTreePreIn(preOrder: [Int], preStart: Int, preEnd: Int, inOrder: [Int], inStart: Int, inEnd: Int, dict: [Int: Int]) -> TreeNode<Int>? {
+        if preStart > preEnd || inStart > inEnd {
+            return nil
+        }
+
+        let root = TreeNode<Int>(value: preOrder[preStart])
+        let inRoot = dict[root.data]!
+        let numsLeft = inRoot - inStart
+
+        root.left = createTreePreIn(preOrder: preOrder, preStart: preStart + 1, preEnd: preStart + numsLeft, inOrder: inOrder, inStart: inStart, inEnd: inRoot - 1, dict: dict)
+        root.right = createTreePreIn(preOrder: preOrder, preStart: preStart + numsLeft + 1, preEnd: preEnd, inOrder: inOrder, inStart: inRoot + 1, inEnd: inEnd, dict: dict)
+
+        return root
+
+    }
+
+    func buildTreeInPost(_ inorder: [Int], _ postorder: [Int]) -> TreeNode<Int>? {
+        let count = inorder.count
+        var dict = [Int: Int]()
+        for i in stride(from: 0, through: count - 1, by: 1) {
+            dict[inorder[i]] = i
+        }
+        return createTreeInPost(inOrder: inorder, inStart: 0, inEnd: count - 1, postOrder: postorder, postStart: 0, postEnd: count - 1, dict: dict)
+    }
+
+    func createTreeInPost(inOrder: [Int], inStart: Int, inEnd: Int, postOrder: [Int], postStart: Int, postEnd: Int, dict: [Int: Int]) -> TreeNode<Int>? {
+        if inStart > inEnd || postStart > postEnd {
+            return nil
+        }
+
+        let root = TreeNode<Int>(value: postOrder[postEnd])
+        let inRoot = dict[root.data]!
+        let numsLeft = inRoot - inStart
+        root.left = createTreeInPost(inOrder: inOrder, inStart: inStart, inEnd: inRoot - 1, postOrder: postOrder, postStart: postStart, postEnd: postStart + numsLeft - 1, dict: dict)
+        root.right = createTreeInPost(inOrder: inOrder, inStart: inRoot + 1, inEnd: inEnd, postOrder: postOrder, postStart: postStart + numsLeft, postEnd: postEnd - 1, dict: dict)
+        return root
+    }
+
+    /*
+
+     Code
+     Testcase
+     Testcase
+     Test Result
+     297. Serialize and Deserialize Binary Tree
+     Solved
+     Hard
+     Topics
+     conpanies icon
+     Companies
+     Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+
+     Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+
+     Clarification: The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+
+
+
+     Example 1:
+
+
+     Input: root = [1,2,3,null,null,4,5]
+     Output: [1,2,3,null,null,4,5]
+     Example 2:
+
+     Input: root = []
+     Output: []
+
+
+     Constraints:
+
+     The number of nodes in the tree is in the range [0, 104].
+     -1000 <= Node.val <= 1000
+     */
+
+    func serialize(_ root: TreeNode<Int>?) -> String {
+            guard let root = root else { return "" }
+            var result = ""
+            var queue = [TreeNode<Int>?]()
+            queue.append(root)
+            while !queue.isEmpty {
+                if let current = queue.removeFirst() {
+                    result.append("\(current.data),")
+                    queue.append(current.left)
+                    queue.append(current.right)
+
+                } else {
+                    result.append("#,")
+                }
+            }
+            return result
+        }
+
+        func deserialize(_ data: String) -> TreeNode<Int>? {
+            guard !data.isEmpty else { return nil }
+            var components = data.components(separatedBy: ",")
+            var counter = 0
+            var root = TreeNode<Int>(value: Int(components[0])!)
+            counter += 1
+            var queue = [TreeNode<Int>]()
+            queue.append(root)
+            while !queue.isEmpty {
+                let current = queue.removeFirst()
+                let component1 = components[counter]
+                counter += 1
+                if component1 == "#" {
+                    current.left = nil
+                } else {
+                    let left = TreeNode<Int>(value: Int(component1)!)
+                    current.left = left
+                    queue.append(left)
+                }
+                let component2 = components[counter]
+                counter += 1
+                if component2 == "#" {
+                    current.right = nil
+                } else {
+                    let right = TreeNode<Int>(value: Int(component2)!)
+                    current.right = right
+                    queue.append(right)
+                }
+            }
+            return root
+        }
 }

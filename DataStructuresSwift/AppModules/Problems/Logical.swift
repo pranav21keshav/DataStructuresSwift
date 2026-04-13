@@ -100,4 +100,179 @@ struct Logical {
             return 0
         }
     }
+
+    /*
+
+     528. Random Pick with Weight
+     You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.
+
+     You need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (inclusive) and returns it. The probability of picking an index i is w[i] / sum(w).
+
+     For example, if w = [1, 3], the probability of picking index 0 is 1 / (1 + 3) = 0.25 (i.e., 25%), and the probability of picking index 1 is 3 / (1 + 3) = 0.75 (i.e., 75%).
+
+
+     Example 1:
+
+     Input
+     ["Solution","pickIndex"]
+     [[[1]],[]]
+     Output
+     [null,0]
+
+     Explanation
+     Solution solution = new Solution([1]);
+     solution.pickIndex(); // return 0. The only option is to return 0 since there is only one element in w.
+     Example 2:
+
+     Input
+     ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
+     [[[1,3]],[],[],[],[],[]]
+     Output
+     [null,1,1,1,1,0]
+
+     Explanation
+     Solution solution = new Solution([1, 3]);
+     solution.pickIndex(); // return 1. It is returning the second element (index = 1) that has a probability of 3/4.
+     solution.pickIndex(); // return 1
+     solution.pickIndex(); // return 1
+     solution.pickIndex(); // return 1
+     solution.pickIndex(); // return 0. It is returning the first element (index = 0) that has a probability of 1/4.
+
+     Since this is a randomization problem, multiple answers are allowed.
+     All of the following outputs can be considered correct:
+     [null,1,1,1,1,0]
+     [null,1,1,1,1,1]
+     [null,1,1,1,0,0]
+     [null,1,1,1,0,1]
+     [null,1,0,1,0,0]
+     ......
+     and so on.
+
+
+     Constraints:
+
+     1 <= w.length <= 104
+     1 <= w[i] <= 105
+     pickIndex will be called at most 104 times.
+     */
+    // Unsolved
+
+    class Solution {
+
+        init(_ w: [Int]) {
+
+        }
+
+        func pickIndex() -> Int {
+
+            return 0
+        }
+    }
+
+    /*
+     * Your Solution object will be instantiated and called as such:
+     * let obj = Solution(w)
+     * let ret_1: Int = obj.pickIndex()
+     */
+
+    /*
+     65. Valid Number
+    
+     Given a string s, return whether s is a valid number.
+
+     For example, all the following are valid numbers: "2", "0089", "-0.1", "+3.14", "4.", "-.9", "2e10", "-90E3", "3e+7", "+6e-1", "53.5e93", "-123.456e789", while the following are not valid numbers: "abc", "1a", "1e", "e3", "99e2.5", "--6", "-+3", "95a54e53".
+
+     Formally, a valid number is defined using one of the following definitions:
+
+     An integer number followed by an optional exponent.
+     A decimal number followed by an optional exponent.
+     An integer number is defined with an optional sign '-' or '+' followed by digits.
+
+     A decimal number is defined with an optional sign '-' or '+' followed by one of the following definitions:
+
+     Digits followed by a dot '.'.
+     Digits followed by a dot '.' followed by digits.
+     A dot '.' followed by digits.
+     An exponent is defined with an exponent notation 'e' or 'E' followed by an integer number.
+
+     The digits are defined as one or more digits.
+
+
+
+     Example 1:
+
+     Input: s = "0"
+
+     Output: true
+
+     Example 2:
+
+     Input: s = "e"
+
+     Output: false
+
+     Example 3:
+
+     Input: s = "."
+
+     Output: false
+
+
+
+     Constraints:
+
+     1 <= s.length <= 20
+     s consists of only English letters (both uppercase and lowercase), digits (0-9), plus '+', minus '-', or dot '.'.
+     */
+    // Unsolved
+    /*
+     1762. Buildings With an Ocean View
+
+     There are n buildings in a line. You are given an integer array heights of size n that represents the heights of the buildings in the line.
+
+     The ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without obstructions. Formally, a building has an ocean view if all the buildings to its right have a smaller height.
+
+     Return a list of indices (0-indexed) of buildings that have an ocean view, sorted in increasing order.
+
+
+
+     Example 1:
+
+     Input: heights = [4,2,3,1]
+     Output: [0,2,3]
+     Explanation: Building 1 (0-indexed) does not have an ocean view because building 2 is taller.
+     Example 2:
+
+     Input: heights = [4,3,2,1]
+     Output: [0,1,2,3]
+     Explanation: All the buildings have an ocean view.
+     Example 3:
+
+     Input: heights = [1,3,2,4]
+     Output: [3]
+     Explanation: Only building 3 has an ocean view.
+
+
+     Constraints:
+
+     1 <= heights.length <= 105
+     1 <= heights[i] <= 109
+     */
+
+    // BF - For each building check if right side blocks view
+    // Opti 1 - Check for monotonic stack
+    // Opti 2 - Check for monotonic stack
+    // Opti 3 - Start from right and check if it is more than max. If yes then add it to list and at the end reverse it
+    func findBuildings(_ heights: [Int]) -> [Int] {
+        var result = [Int]()
+        var maximum = -1
+        let count = heights.count
+        for i in stride(from: count - 1, through: 0, by: -1) {
+            if maximum < heights[i] {
+                maximum = heights[i]
+                result.append(i)
+            }
+        }
+        return result.reversed()
+    }
 }

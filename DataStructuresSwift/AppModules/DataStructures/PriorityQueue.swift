@@ -89,6 +89,124 @@ struct PriorityQueueLinkedList<T> {
         let data = head?.data
         head = head?.next
         return data
+    }
+}
 
+struct PriorityQueueHeapItem<T: Hashable & Comparable, U: Hashable & Comparable> {
+    var x: T
+    var y: U
+}
+
+extension PriorityQueueHeapItem: Comparable {
+    static func < (lhs: PriorityQueueHeapItem<T, U>, rhs: PriorityQueueHeapItem<T, U>) -> Bool {
+        if lhs.x == rhs.x {
+            return lhs.y < rhs.y
+        }
+        return lhs.x < rhs.x
+    }
+}
+
+extension PriorityQueueHeapItem: Hashable {}
+
+struct PriorityQueueHeap<T: Hashable & Comparable> {
+    private let capacity: Int
+    private var elements: [T]
+    var size = 0
+
+    init(capacity: Int) {
+        self.capacity = capacity
+        elements = [T]()
+    }
+
+    func left(index: Int) -> Int {
+        (2 * index) + 1
+    }
+
+    func right(index: Int) -> Int {
+        (2 * index) + 2
+    }
+
+    func parent(index: Int) -> Int {
+        (index - 1) / 2
+    }
+
+    var isEmpty: Bool {
+        return elements.isEmpty
+    }
+
+    var count: Int {
+        return elements.count
+    }
+
+    func peek() -> T? {
+      return elements.first
+    }
+
+    mutating func insert(value: T) {
+        if size == capacity {
+            return
+        }
+        elements.append(value)
+        var k = size
+        size += 1
+        while k > 0 && elements[k] >= elements[parent(index: k)] {
+            elements.swapAt(k, parent(index: k))
+            k = parent(index: k)
+        }
+    }
+
+    mutating private func heapify(index: Int) {
+        let leftIndex = left(index: index)
+        let rightIndex = right(index: index)
+        var maxIndex = index
+        if leftIndex < size && elements[leftIndex] < elements[maxIndex] {
+            maxIndex = leftIndex
+        }
+        if rightIndex < size && elements[rightIndex] < elements[maxIndex] {
+            maxIndex = rightIndex
+        }
+
+        if maxIndex != index {
+            elements.swapAt(maxIndex, index)
+            heapify(index: maxIndex)
+        }
+    }
+
+    mutating func shiftDown(index: Int) {
+        var maxIndex = index
+        let left = left(index: index)
+        let right = right(index: index)
+        if left < size && elements[left] > elements[maxIndex] {
+            maxIndex = left
+        }
+
+        if right < size && elements[right] > elements[maxIndex] {
+            maxIndex = right
+        }
+        if maxIndex != index {
+            elements.swapAt(maxIndex, index)
+            shiftDown(index: maxIndex)
+        }
+    }
+
+    mutating func remove() -> T? {
+        if size == 0 {
+            return nil
+        }
+        if size == 1 {
+            size -= 1
+            return elements.removeLast()
+        }
+        let element = elements[0]
+        elements[0] = elements[size - 1]
+        elements.removeLast()
+        size -= 1
+//        shiftDown(index: 0)
+        heapify(index: 0)
+        return element
+    }
+
+    func top() -> T? {
+        elements.first
     }
 }
